@@ -1,0 +1,2 @@
+- only read one PRI from the data set at a time
+- correct phase chopping.
