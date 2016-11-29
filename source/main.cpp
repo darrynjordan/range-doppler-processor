@@ -1,6 +1,7 @@
 #include "includes.h"
 #include "processor.h"
 #include "timer.h"
+#include <unistd.h>
 
 #define VERSION "0.1.6"
 
@@ -8,18 +9,42 @@ void splash(void);
 
 int main(int argc, char *argv[])
 {    
+	int opt;
+	bool debug_flag = false;
+	bool file_flag = false;
+	const char *file_path;
+	
 	splash();	
-
-	if (argc != 2)
+	
+	while ((opt = getopt(argc, argv, "f:d")) != -1 ) 
     {
-		printf("Please provide a .ini file as an argument.\n");
+        switch (opt) 
+        {
+            case 'd':
+                debug_flag = true;
+                break;
+			case 'f':
+				file_path = optarg;
+				file_flag = true;
+				break;
+            case '?':
+				if (optopt == 'f')
+					fprintf (stderr, "Option -f requires an argument.\n");		
+				else
+				fprintf (stderr, "Unknown option character `\\x%x'.\n", optopt);				
+        }
+    }
+
+	if (!file_flag)
+    {
+		printf("Please provide a .ini file as an argument using: -f file_name.\n");
 		exit(EXIT_FAILURE);
 	} 
 	
 	Timer stopwatch;
 	stopwatch.start();	
 	
-	Processor processor(argv[1], stopwatch);  		
+	Processor processor(file_path, stopwatch);  		
    
     processor.sniffDataset();
     processor.allocateMemory();
@@ -35,7 +60,7 @@ int main(int argc, char *argv[])
 void splash(void)
 {
 	system("clear");
-    printf("RDP v%s\n", VERSION);
-    printf("----------------------\n");
+    printf("Range-Doppler Processor v%s\n", VERSION);
+    printf("------------------------------\n");
 }
 
