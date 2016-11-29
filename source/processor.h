@@ -64,7 +64,7 @@ class Processor
 		Timer stopwatch;
 	
 	public:
-        Processor(const char *filePath, Timer &timer);       	
+        Processor(const char *filePath, Timer &timer, bool debug_flag = false);       	
 
         //calculate the upper next power of two
         int nextPowTwo(float value){return (pow(2, ceil(log(value)/log(2))));};

@@ -9,6 +9,7 @@ void splash(void);
 
 int main(int argc, char *argv[])
 {    
+	Timer stopwatch;
 	int opt;
 	bool debug_flag = false;
 	bool file_flag = false;
@@ -41,10 +42,9 @@ int main(int argc, char *argv[])
 		exit(EXIT_FAILURE);
 	} 
 	
-	Timer stopwatch;
 	stopwatch.start();	
 	
-	Processor processor(file_path, stopwatch);  		
+	Processor processor(file_path, stopwatch, debug_flag);  		
    
     processor.sniffDataset();
     processor.allocateMemory();

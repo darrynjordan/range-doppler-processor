@@ -1,9 +1,12 @@
 #include "processor.h"
 
 
-Processor::Processor(const char *filePath, Timer &timer)
+Processor::Processor(const char *filePath, Timer &timer, bool debug_flag)
 {
 	stopwatch = timer;
+	isDebug = debug_flag;
+	
+	std::cout << isDebug << std::endl;	
 	
 	//check that filepath is good
 	std::ifstream check(filePath);
@@ -49,13 +52,6 @@ Processor::Processor(const char *filePath, Timer &timer)
 		dopplerTaper.setFunction(BLACKMAN);
 	else 	
 		dopplerTaper.setFunction(UNIFORM);
-		
-	keyValue = ini.GetValue("overview", "debug_mode");	
-	
-	if ((keyValue == "1") || (keyValue == "true") || (keyValue == "TRUE"))
-		isDebug = true;
-	else
-		isDebug = false;
 		
 	keyValue = ini.GetValue("processing", "doppler");	
 	
