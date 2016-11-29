@@ -1,2 +1,2 @@
-# range_doppler_processor
+# range-doppler-processor
 Range-Doppler processing suite for FMCW radar.
