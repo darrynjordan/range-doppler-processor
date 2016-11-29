@@ -4,9 +4,7 @@
 Processor::Processor(const char *filePath, Timer &timer, bool debug_flag)
 {
 	stopwatch = timer;
-	isDebug = debug_flag;
-	
-	std::cout << isDebug << std::endl;	
+	isDebug = debug_flag;	
 	
 	//check that filepath is good
 	std::ifstream check(filePath);
@@ -58,7 +56,7 @@ Processor::Processor(const char *filePath, Timer &timer, bool debug_flag)
 	if ((keyValue == "1") || (keyValue == "true") || (keyValue == "TRUE"))
 		isDoppler = true;
 	else
-		isDoppler = false;	
+		isDoppler = false;
 
 	logger.timestamp("Dataset parameters extracted.", stopwatch);
 }
@@ -144,6 +142,21 @@ void Processor::sniffDataset(void)
 		
 		rangeTaper.generate(ns_profile);		
 		dopplerTaper.generate(ns_doppler);		
+		
+		if(isDebug)
+		{
+			std::cout << std::endl;
+			std::cout << "ns_trim: \t" << ns_trim << std::endl;
+			std::cout << "ns_dataset: \t" << ns_dataset << std::endl;				
+			std::cout << "ns_profile: \t" << ns_profile << std::endl;
+			std::cout << "n_profiles: \t" << n_profiles << std::endl;
+			std::cout << "ns_padded: \t" << ns_padded << std::endl;
+			std::cout << "ns_spectrum: \t" << ns_spectrum << std::endl;
+			std::cout << "ns_doppler: \t" << ns_doppler << std::endl;	
+			std::cout << "update_rate: \t" << updateRate << std::endl;	
+			std::cout << "doppler: \t" << isDoppler << std::endl;
+			std::cout << std::endl;
+		}
 		
 		logger.timestamp("Binary dataset sniffed.", stopwatch);
 	}	

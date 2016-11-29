@@ -49,7 +49,7 @@ int main(int argc, char *argv[])
     processor.sniffDataset();
     processor.allocateMemory();
     processor.createPlans();  
-    processor.initPlots();
+    processor.initPlots();    
     processor.perRangeProc(); 
     processor.releaseMemory();    
   

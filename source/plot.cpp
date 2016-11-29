@@ -171,7 +171,7 @@ void GNUPlot::plot(uint8_t* data, int samples)
 OpenCVPlot::OpenCVPlot(void)
 {
     //set default values
-    colourMapSlider = 2;
+    colourMapSlider = 0;
     thresholdSlider = 0;
     equalizeHistSlider = 0;
     zoomSlider = 0;
