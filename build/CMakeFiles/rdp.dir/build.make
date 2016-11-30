@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /media/Storage/Projects/range_doppler_processor
+CMAKE_SOURCE_DIR = /home/darryn/Git/range_doppler_processor
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /media/Storage/Projects/range_doppler_processor/build
+CMAKE_BINARY_DIR = /home/darryn/Git/range_doppler_processor/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/rdp.dir/depend.make
@@ -57,18 +57,90 @@ include CMakeFiles/rdp.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/rdp.dir/flags.make
 
+CMakeFiles/rdp.dir/source/processor.cpp.o: CMakeFiles/rdp.dir/flags.make
+CMakeFiles/rdp.dir/source/processor.cpp.o: ../source/processor.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darryn/Git/range_doppler_processor/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/rdp.dir/source/processor.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/rdp.dir/source/processor.cpp.o -c /home/darryn/Git/range_doppler_processor/source/processor.cpp
+
+CMakeFiles/rdp.dir/source/processor.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/rdp.dir/source/processor.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/darryn/Git/range_doppler_processor/source/processor.cpp > CMakeFiles/rdp.dir/source/processor.cpp.i
+
+CMakeFiles/rdp.dir/source/processor.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/rdp.dir/source/processor.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/darryn/Git/range_doppler_processor/source/processor.cpp -o CMakeFiles/rdp.dir/source/processor.cpp.s
+
+CMakeFiles/rdp.dir/source/processor.cpp.o.requires:
+
+.PHONY : CMakeFiles/rdp.dir/source/processor.cpp.o.requires
+
+CMakeFiles/rdp.dir/source/processor.cpp.o.provides: CMakeFiles/rdp.dir/source/processor.cpp.o.requires
+	$(MAKE) -f CMakeFiles/rdp.dir/build.make CMakeFiles/rdp.dir/source/processor.cpp.o.provides.build
+.PHONY : CMakeFiles/rdp.dir/source/processor.cpp.o.provides
+
+CMakeFiles/rdp.dir/source/processor.cpp.o.provides.build: CMakeFiles/rdp.dir/source/processor.cpp.o
+
+
+CMakeFiles/rdp.dir/source/plot.cpp.o: CMakeFiles/rdp.dir/flags.make
+CMakeFiles/rdp.dir/source/plot.cpp.o: ../source/plot.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darryn/Git/range_doppler_processor/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/rdp.dir/source/plot.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/rdp.dir/source/plot.cpp.o -c /home/darryn/Git/range_doppler_processor/source/plot.cpp
+
+CMakeFiles/rdp.dir/source/plot.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/rdp.dir/source/plot.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/darryn/Git/range_doppler_processor/source/plot.cpp > CMakeFiles/rdp.dir/source/plot.cpp.i
+
+CMakeFiles/rdp.dir/source/plot.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/rdp.dir/source/plot.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/darryn/Git/range_doppler_processor/source/plot.cpp -o CMakeFiles/rdp.dir/source/plot.cpp.s
+
+CMakeFiles/rdp.dir/source/plot.cpp.o.requires:
+
+.PHONY : CMakeFiles/rdp.dir/source/plot.cpp.o.requires
+
+CMakeFiles/rdp.dir/source/plot.cpp.o.provides: CMakeFiles/rdp.dir/source/plot.cpp.o.requires
+	$(MAKE) -f CMakeFiles/rdp.dir/build.make CMakeFiles/rdp.dir/source/plot.cpp.o.provides.build
+.PHONY : CMakeFiles/rdp.dir/source/plot.cpp.o.provides
+
+CMakeFiles/rdp.dir/source/plot.cpp.o.provides.build: CMakeFiles/rdp.dir/source/plot.cpp.o
+
+
+CMakeFiles/rdp.dir/source/taper.cpp.o: CMakeFiles/rdp.dir/flags.make
+CMakeFiles/rdp.dir/source/taper.cpp.o: ../source/taper.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darryn/Git/range_doppler_processor/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/rdp.dir/source/taper.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/rdp.dir/source/taper.cpp.o -c /home/darryn/Git/range_doppler_processor/source/taper.cpp
+
+CMakeFiles/rdp.dir/source/taper.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/rdp.dir/source/taper.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/darryn/Git/range_doppler_processor/source/taper.cpp > CMakeFiles/rdp.dir/source/taper.cpp.i
+
+CMakeFiles/rdp.dir/source/taper.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/rdp.dir/source/taper.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/darryn/Git/range_doppler_processor/source/taper.cpp -o CMakeFiles/rdp.dir/source/taper.cpp.s
+
+CMakeFiles/rdp.dir/source/taper.cpp.o.requires:
+
+.PHONY : CMakeFiles/rdp.dir/source/taper.cpp.o.requires
+
+CMakeFiles/rdp.dir/source/taper.cpp.o.provides: CMakeFiles/rdp.dir/source/taper.cpp.o.requires
+	$(MAKE) -f CMakeFiles/rdp.dir/build.make CMakeFiles/rdp.dir/source/taper.cpp.o.provides.build
+.PHONY : CMakeFiles/rdp.dir/source/taper.cpp.o.provides
+
+CMakeFiles/rdp.dir/source/taper.cpp.o.provides.build: CMakeFiles/rdp.dir/source/taper.cpp.o
+
+
 CMakeFiles/rdp.dir/source/colour.cpp.o: CMakeFiles/rdp.dir/flags.make
 CMakeFiles/rdp.dir/source/colour.cpp.o: ../source/colour.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/media/Storage/Projects/range_doppler_processor/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/rdp.dir/source/colour.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/rdp.dir/source/colour.cpp.o -c /media/Storage/Projects/range_doppler_processor/source/colour.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darryn/Git/range_doppler_processor/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/rdp.dir/source/colour.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/rdp.dir/source/colour.cpp.o -c /home/darryn/Git/range_doppler_processor/source/colour.cpp
 
 CMakeFiles/rdp.dir/source/colour.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/rdp.dir/source/colour.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /media/Storage/Projects/range_doppler_processor/source/colour.cpp > CMakeFiles/rdp.dir/source/colour.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/darryn/Git/range_doppler_processor/source/colour.cpp > CMakeFiles/rdp.dir/source/colour.cpp.i
 
 CMakeFiles/rdp.dir/source/colour.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/rdp.dir/source/colour.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /media/Storage/Projects/range_doppler_processor/source/colour.cpp -o CMakeFiles/rdp.dir/source/colour.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/darryn/Git/range_doppler_processor/source/colour.cpp -o CMakeFiles/rdp.dir/source/colour.cpp.s
 
 CMakeFiles/rdp.dir/source/colour.cpp.o.requires:
 
@@ -81,18 +153,42 @@ CMakeFiles/rdp.dir/source/colour.cpp.o.provides: CMakeFiles/rdp.dir/source/colou
 CMakeFiles/rdp.dir/source/colour.cpp.o.provides.build: CMakeFiles/rdp.dir/source/colour.cpp.o
 
 
+CMakeFiles/rdp.dir/source/timer.cpp.o: CMakeFiles/rdp.dir/flags.make
+CMakeFiles/rdp.dir/source/timer.cpp.o: ../source/timer.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darryn/Git/range_doppler_processor/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/rdp.dir/source/timer.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/rdp.dir/source/timer.cpp.o -c /home/darryn/Git/range_doppler_processor/source/timer.cpp
+
+CMakeFiles/rdp.dir/source/timer.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/rdp.dir/source/timer.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/darryn/Git/range_doppler_processor/source/timer.cpp > CMakeFiles/rdp.dir/source/timer.cpp.i
+
+CMakeFiles/rdp.dir/source/timer.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/rdp.dir/source/timer.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/darryn/Git/range_doppler_processor/source/timer.cpp -o CMakeFiles/rdp.dir/source/timer.cpp.s
+
+CMakeFiles/rdp.dir/source/timer.cpp.o.requires:
+
+.PHONY : CMakeFiles/rdp.dir/source/timer.cpp.o.requires
+
+CMakeFiles/rdp.dir/source/timer.cpp.o.provides: CMakeFiles/rdp.dir/source/timer.cpp.o.requires
+	$(MAKE) -f CMakeFiles/rdp.dir/build.make CMakeFiles/rdp.dir/source/timer.cpp.o.provides.build
+.PHONY : CMakeFiles/rdp.dir/source/timer.cpp.o.provides
+
+CMakeFiles/rdp.dir/source/timer.cpp.o.provides.build: CMakeFiles/rdp.dir/source/timer.cpp.o
+
+
 CMakeFiles/rdp.dir/source/logger.cpp.o: CMakeFiles/rdp.dir/flags.make
 CMakeFiles/rdp.dir/source/logger.cpp.o: ../source/logger.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/media/Storage/Projects/range_doppler_processor/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/rdp.dir/source/logger.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/rdp.dir/source/logger.cpp.o -c /media/Storage/Projects/range_doppler_processor/source/logger.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darryn/Git/range_doppler_processor/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/rdp.dir/source/logger.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/rdp.dir/source/logger.cpp.o -c /home/darryn/Git/range_doppler_processor/source/logger.cpp
 
 CMakeFiles/rdp.dir/source/logger.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/rdp.dir/source/logger.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /media/Storage/Projects/range_doppler_processor/source/logger.cpp > CMakeFiles/rdp.dir/source/logger.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/darryn/Git/range_doppler_processor/source/logger.cpp > CMakeFiles/rdp.dir/source/logger.cpp.i
 
 CMakeFiles/rdp.dir/source/logger.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/rdp.dir/source/logger.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /media/Storage/Projects/range_doppler_processor/source/logger.cpp -o CMakeFiles/rdp.dir/source/logger.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/darryn/Git/range_doppler_processor/source/logger.cpp -o CMakeFiles/rdp.dir/source/logger.cpp.s
 
 CMakeFiles/rdp.dir/source/logger.cpp.o.requires:
 
@@ -107,16 +203,16 @@ CMakeFiles/rdp.dir/source/logger.cpp.o.provides.build: CMakeFiles/rdp.dir/source
 
 CMakeFiles/rdp.dir/source/main.cpp.o: CMakeFiles/rdp.dir/flags.make
 CMakeFiles/rdp.dir/source/main.cpp.o: ../source/main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/media/Storage/Projects/range_doppler_processor/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/rdp.dir/source/main.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/rdp.dir/source/main.cpp.o -c /media/Storage/Projects/range_doppler_processor/source/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darryn/Git/range_doppler_processor/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/rdp.dir/source/main.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/rdp.dir/source/main.cpp.o -c /home/darryn/Git/range_doppler_processor/source/main.cpp
 
 CMakeFiles/rdp.dir/source/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/rdp.dir/source/main.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /media/Storage/Projects/range_doppler_processor/source/main.cpp > CMakeFiles/rdp.dir/source/main.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/darryn/Git/range_doppler_processor/source/main.cpp > CMakeFiles/rdp.dir/source/main.cpp.i
 
 CMakeFiles/rdp.dir/source/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/rdp.dir/source/main.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /media/Storage/Projects/range_doppler_processor/source/main.cpp -o CMakeFiles/rdp.dir/source/main.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/darryn/Git/range_doppler_processor/source/main.cpp -o CMakeFiles/rdp.dir/source/main.cpp.s
 
 CMakeFiles/rdp.dir/source/main.cpp.o.requires:
 
@@ -129,122 +225,26 @@ CMakeFiles/rdp.dir/source/main.cpp.o.provides: CMakeFiles/rdp.dir/source/main.cp
 CMakeFiles/rdp.dir/source/main.cpp.o.provides.build: CMakeFiles/rdp.dir/source/main.cpp.o
 
 
-CMakeFiles/rdp.dir/source/plot.cpp.o: CMakeFiles/rdp.dir/flags.make
-CMakeFiles/rdp.dir/source/plot.cpp.o: ../source/plot.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/media/Storage/Projects/range_doppler_processor/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/rdp.dir/source/plot.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/rdp.dir/source/plot.cpp.o -c /media/Storage/Projects/range_doppler_processor/source/plot.cpp
-
-CMakeFiles/rdp.dir/source/plot.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/rdp.dir/source/plot.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /media/Storage/Projects/range_doppler_processor/source/plot.cpp > CMakeFiles/rdp.dir/source/plot.cpp.i
-
-CMakeFiles/rdp.dir/source/plot.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/rdp.dir/source/plot.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /media/Storage/Projects/range_doppler_processor/source/plot.cpp -o CMakeFiles/rdp.dir/source/plot.cpp.s
-
-CMakeFiles/rdp.dir/source/plot.cpp.o.requires:
-
-.PHONY : CMakeFiles/rdp.dir/source/plot.cpp.o.requires
-
-CMakeFiles/rdp.dir/source/plot.cpp.o.provides: CMakeFiles/rdp.dir/source/plot.cpp.o.requires
-	$(MAKE) -f CMakeFiles/rdp.dir/build.make CMakeFiles/rdp.dir/source/plot.cpp.o.provides.build
-.PHONY : CMakeFiles/rdp.dir/source/plot.cpp.o.provides
-
-CMakeFiles/rdp.dir/source/plot.cpp.o.provides.build: CMakeFiles/rdp.dir/source/plot.cpp.o
-
-
-CMakeFiles/rdp.dir/source/processor.cpp.o: CMakeFiles/rdp.dir/flags.make
-CMakeFiles/rdp.dir/source/processor.cpp.o: ../source/processor.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/media/Storage/Projects/range_doppler_processor/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/rdp.dir/source/processor.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/rdp.dir/source/processor.cpp.o -c /media/Storage/Projects/range_doppler_processor/source/processor.cpp
-
-CMakeFiles/rdp.dir/source/processor.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/rdp.dir/source/processor.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /media/Storage/Projects/range_doppler_processor/source/processor.cpp > CMakeFiles/rdp.dir/source/processor.cpp.i
-
-CMakeFiles/rdp.dir/source/processor.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/rdp.dir/source/processor.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /media/Storage/Projects/range_doppler_processor/source/processor.cpp -o CMakeFiles/rdp.dir/source/processor.cpp.s
-
-CMakeFiles/rdp.dir/source/processor.cpp.o.requires:
-
-.PHONY : CMakeFiles/rdp.dir/source/processor.cpp.o.requires
-
-CMakeFiles/rdp.dir/source/processor.cpp.o.provides: CMakeFiles/rdp.dir/source/processor.cpp.o.requires
-	$(MAKE) -f CMakeFiles/rdp.dir/build.make CMakeFiles/rdp.dir/source/processor.cpp.o.provides.build
-.PHONY : CMakeFiles/rdp.dir/source/processor.cpp.o.provides
-
-CMakeFiles/rdp.dir/source/processor.cpp.o.provides.build: CMakeFiles/rdp.dir/source/processor.cpp.o
-
-
-CMakeFiles/rdp.dir/source/taper.cpp.o: CMakeFiles/rdp.dir/flags.make
-CMakeFiles/rdp.dir/source/taper.cpp.o: ../source/taper.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/media/Storage/Projects/range_doppler_processor/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/rdp.dir/source/taper.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/rdp.dir/source/taper.cpp.o -c /media/Storage/Projects/range_doppler_processor/source/taper.cpp
-
-CMakeFiles/rdp.dir/source/taper.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/rdp.dir/source/taper.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /media/Storage/Projects/range_doppler_processor/source/taper.cpp > CMakeFiles/rdp.dir/source/taper.cpp.i
-
-CMakeFiles/rdp.dir/source/taper.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/rdp.dir/source/taper.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /media/Storage/Projects/range_doppler_processor/source/taper.cpp -o CMakeFiles/rdp.dir/source/taper.cpp.s
-
-CMakeFiles/rdp.dir/source/taper.cpp.o.requires:
-
-.PHONY : CMakeFiles/rdp.dir/source/taper.cpp.o.requires
-
-CMakeFiles/rdp.dir/source/taper.cpp.o.provides: CMakeFiles/rdp.dir/source/taper.cpp.o.requires
-	$(MAKE) -f CMakeFiles/rdp.dir/build.make CMakeFiles/rdp.dir/source/taper.cpp.o.provides.build
-.PHONY : CMakeFiles/rdp.dir/source/taper.cpp.o.provides
-
-CMakeFiles/rdp.dir/source/taper.cpp.o.provides.build: CMakeFiles/rdp.dir/source/taper.cpp.o
-
-
-CMakeFiles/rdp.dir/source/timer.cpp.o: CMakeFiles/rdp.dir/flags.make
-CMakeFiles/rdp.dir/source/timer.cpp.o: ../source/timer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/media/Storage/Projects/range_doppler_processor/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/rdp.dir/source/timer.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/rdp.dir/source/timer.cpp.o -c /media/Storage/Projects/range_doppler_processor/source/timer.cpp
-
-CMakeFiles/rdp.dir/source/timer.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/rdp.dir/source/timer.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /media/Storage/Projects/range_doppler_processor/source/timer.cpp > CMakeFiles/rdp.dir/source/timer.cpp.i
-
-CMakeFiles/rdp.dir/source/timer.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/rdp.dir/source/timer.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /media/Storage/Projects/range_doppler_processor/source/timer.cpp -o CMakeFiles/rdp.dir/source/timer.cpp.s
-
-CMakeFiles/rdp.dir/source/timer.cpp.o.requires:
-
-.PHONY : CMakeFiles/rdp.dir/source/timer.cpp.o.requires
-
-CMakeFiles/rdp.dir/source/timer.cpp.o.provides: CMakeFiles/rdp.dir/source/timer.cpp.o.requires
-	$(MAKE) -f CMakeFiles/rdp.dir/build.make CMakeFiles/rdp.dir/source/timer.cpp.o.provides.build
-.PHONY : CMakeFiles/rdp.dir/source/timer.cpp.o.provides
-
-CMakeFiles/rdp.dir/source/timer.cpp.o.provides.build: CMakeFiles/rdp.dir/source/timer.cpp.o
-
-
 # Object files for target rdp
 rdp_OBJECTS = \
-"CMakeFiles/rdp.dir/source/colour.cpp.o" \
-"CMakeFiles/rdp.dir/source/logger.cpp.o" \
-"CMakeFiles/rdp.dir/source/main.cpp.o" \
-"CMakeFiles/rdp.dir/source/plot.cpp.o" \
 "CMakeFiles/rdp.dir/source/processor.cpp.o" \
+"CMakeFiles/rdp.dir/source/plot.cpp.o" \
 "CMakeFiles/rdp.dir/source/taper.cpp.o" \
-"CMakeFiles/rdp.dir/source/timer.cpp.o"
+"CMakeFiles/rdp.dir/source/colour.cpp.o" \
+"CMakeFiles/rdp.dir/source/timer.cpp.o" \
+"CMakeFiles/rdp.dir/source/logger.cpp.o" \
+"CMakeFiles/rdp.dir/source/main.cpp.o"
 
 # External object files for target rdp
 rdp_EXTERNAL_OBJECTS =
 
+rdp: CMakeFiles/rdp.dir/source/processor.cpp.o
+rdp: CMakeFiles/rdp.dir/source/plot.cpp.o
+rdp: CMakeFiles/rdp.dir/source/taper.cpp.o
 rdp: CMakeFiles/rdp.dir/source/colour.cpp.o
+rdp: CMakeFiles/rdp.dir/source/timer.cpp.o
 rdp: CMakeFiles/rdp.dir/source/logger.cpp.o
 rdp: CMakeFiles/rdp.dir/source/main.cpp.o
-rdp: CMakeFiles/rdp.dir/source/plot.cpp.o
-rdp: CMakeFiles/rdp.dir/source/processor.cpp.o
-rdp: CMakeFiles/rdp.dir/source/taper.cpp.o
-rdp: CMakeFiles/rdp.dir/source/timer.cpp.o
 rdp: CMakeFiles/rdp.dir/build.make
 rdp: /usr/lib/x86_64-linux-gnu/libopencv_videostab.so.2.4.9
 rdp: /usr/lib/x86_64-linux-gnu/libopencv_ts.so.2.4.9
@@ -266,7 +266,7 @@ rdp: /usr/lib/x86_64-linux-gnu/libopencv_imgproc.so.2.4.9
 rdp: /usr/lib/x86_64-linux-gnu/libopencv_flann.so.2.4.9
 rdp: /usr/lib/x86_64-linux-gnu/libopencv_core.so.2.4.9
 rdp: CMakeFiles/rdp.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/media/Storage/Projects/range_doppler_processor/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable rdp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/darryn/Git/range_doppler_processor/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable rdp"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/rdp.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -274,13 +274,13 @@ CMakeFiles/rdp.dir/build: rdp
 
 .PHONY : CMakeFiles/rdp.dir/build
 
+CMakeFiles/rdp.dir/requires: CMakeFiles/rdp.dir/source/processor.cpp.o.requires
+CMakeFiles/rdp.dir/requires: CMakeFiles/rdp.dir/source/plot.cpp.o.requires
+CMakeFiles/rdp.dir/requires: CMakeFiles/rdp.dir/source/taper.cpp.o.requires
 CMakeFiles/rdp.dir/requires: CMakeFiles/rdp.dir/source/colour.cpp.o.requires
+CMakeFiles/rdp.dir/requires: CMakeFiles/rdp.dir/source/timer.cpp.o.requires
 CMakeFiles/rdp.dir/requires: CMakeFiles/rdp.dir/source/logger.cpp.o.requires
 CMakeFiles/rdp.dir/requires: CMakeFiles/rdp.dir/source/main.cpp.o.requires
-CMakeFiles/rdp.dir/requires: CMakeFiles/rdp.dir/source/plot.cpp.o.requires
-CMakeFiles/rdp.dir/requires: CMakeFiles/rdp.dir/source/processor.cpp.o.requires
-CMakeFiles/rdp.dir/requires: CMakeFiles/rdp.dir/source/taper.cpp.o.requires
-CMakeFiles/rdp.dir/requires: CMakeFiles/rdp.dir/source/timer.cpp.o.requires
 
 .PHONY : CMakeFiles/rdp.dir/requires
 
@@ -289,6 +289,6 @@ CMakeFiles/rdp.dir/clean:
 .PHONY : CMakeFiles/rdp.dir/clean
 
 CMakeFiles/rdp.dir/depend:
-	cd /media/Storage/Projects/range_doppler_processor/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /media/Storage/Projects/range_doppler_processor /media/Storage/Projects/range_doppler_processor /media/Storage/Projects/range_doppler_processor/build /media/Storage/Projects/range_doppler_processor/build /media/Storage/Projects/range_doppler_processor/build/CMakeFiles/rdp.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/darryn/Git/range_doppler_processor/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/darryn/Git/range_doppler_processor /home/darryn/Git/range_doppler_processor /home/darryn/Git/range_doppler_processor/build /home/darryn/Git/range_doppler_processor/build /home/darryn/Git/range_doppler_processor/build/CMakeFiles/rdp.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/rdp.dir/depend
 

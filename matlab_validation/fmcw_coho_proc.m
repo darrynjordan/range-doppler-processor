@@ -12,12 +12,12 @@ Fs = 125e6/DF;                      % sampling frequency [Hz]
 B = 100e6;                          % sweep bandwidth [Hz]
 
 T_up = 327.68e-6;                   % upramp period [s]
-T_down = 81.92e-6;                 % downramp period [s]              
+T_down = 163.84e-6;                 % downramp period [s]              
 T_ramp = T_up + T_down;             % total modulation period per ramp [s]
 
 %% Extract raw data
 
-fid = fopen('/home/darryn/Dropbox/Projects/DroneSAR/RPCP/RPCP_v0.3.0/ch1.bin');
+fid = fopen('/home/darryn/Dropbox/Datasets/Loop-Back/MiloSAR/ch1.bin');
 raw_data = fread(fid, Inf, 'int16');
 
 % Fc = 1.00001e6;    
@@ -39,7 +39,7 @@ ylabel('Arbitrary Amplitude');
 
 % user identifies correct location to begin signal chopping
 pause;
-ns_chop = 2.572e4;
+ns_chop = 2.022e4;
 raw_data = raw_data(ns_chop : length(raw_data)); 
 
 % remove dc offset
