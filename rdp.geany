@@ -28,10 +28,12 @@ long_line_behaviour=1
 long_line_column=72
 
 [files]
-current_page=1
-FILE_NAME_0=843;C++;0;EUTF-8;1;1;0;%2Fmedia%2FStorage%2FProjects%2Frange_doppler_processor%2Fsource%2Fmain.cpp;0;4
-FILE_NAME_1=141;C++;0;EUTF-8;1;1;0;%2Fmedia%2FStorage%2FProjects%2Frange_doppler_processor%2Fsource%2Fprocessor.cpp;0;4
-FILE_NAME_2=1503;C;0;EUTF-8;1;1;0;%2Fmedia%2FStorage%2FProjects%2Frange_doppler_processor%2Fsource%2Fprocessor.h;0;4
+current_page=0
+FILE_NAME_0=1071;C++;0;EUTF-8;1;1;0;%2Fmedia%2FStorage%2FProjects%2Frange_doppler_processor%2Fsource%2Fmain.cpp;0;4
+FILE_NAME_1=4037;C++;0;EUTF-8;1;1;0;%2Fmedia%2FStorage%2FProjects%2Frange_doppler_processor%2Fsource%2Fprocessor.cpp;0;4
+FILE_NAME_2=875;C;0;EUTF-8;1;1;0;%2Fmedia%2FStorage%2FProjects%2Frange_doppler_processor%2Fsource%2Fprocessor.h;0;4
+FILE_NAME_3=3839;C++;0;EUTF-8;1;1;0;%2Fmedia%2FStorage%2FProjects%2Frange_doppler_processor%2Fsource%2Fplot.cpp;0;4
+FILE_NAME_4=0;C;0;EUTF-8;1;1;0;%2Fmedia%2FStorage%2FProjects%2Frange_doppler_processor%2Fsource%2Fplot.h;0;4
 
 [VTE]
 last_dir=/media/Storage/Projects/range_doppler_processor/build
