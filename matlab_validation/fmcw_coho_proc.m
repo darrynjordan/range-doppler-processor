@@ -1,6 +1,6 @@
 %% Processing settings
 
-is_windowing = 1;                   % enable tapering
+is_windowing = 0;                   % enable tapering
 is_sub = 0;                         % enable coherent subtraction
 n_peek = 10;                        % number of profiles to view during processing
 
@@ -9,9 +9,9 @@ n_peek = 10;                        % number of profiles to view during processi
 c = 299792458;                      % speed of light
 DF = 32;                            % decimation factor
 Fs = 125e6/DF;                      % sampling frequency [Hz]
-B = 100e6;                          % sweep bandwidth [Hz]
+B = 150e6;                          % sweep bandwidth [Hz]
 
-T_up = 327.68e-6;                   % upramp period [s]
+T_up = 2*491.52e-6;                 % upramp period [s]
 T_down = 163.84e-6;                 % downramp period [s]              
 T_ramp = T_up + T_down;             % total modulation period per ramp [s]
 
@@ -21,7 +21,7 @@ fid = fopen('/home/darryn/Dropbox/Datasets/Loop-Back/MiloSAR/ch1.bin');
 raw_data = fread(fid, Inf, 'int16');
 
 % Fc = 1.00001e6;    
-% ns_dataset = 1e6;
+% ns_dataset = 1e6; 
 % t_raw = linspace(0, (ns_dataset - 1)/Fs, ns_dataset);
 % raw_data = sin(2*pi*Fc*t_raw);
 
@@ -39,7 +39,7 @@ ylabel('Arbitrary Amplitude');
 
 % user identifies correct location to begin signal chopping
 pause;
-ns_chop = 2.022e4;
+ns_chop = 2.403e4;
 raw_data = raw_data(ns_chop : length(raw_data)); 
 
 % remove dc offset
@@ -51,7 +51,7 @@ raw_data = raw_data - offset;
 ns_dataset = length(raw_data);              % number of recorded samples
 ns_ramp = floor(Fs*T_ramp);
 n_ramps = floor(ns_dataset/ns_ramp);        % number of ramps
-ns_trim = floor(Fs*T_down);
+ns_trim = floor(Fs*1.1*T_down);
 ns_padded = ns_ramp - ns_trim;              % number of samples each ramp will be zero padded to.
 ns_fft = 2^nextpow2(ns_padded);             % number of samples in FFT
 ns_profile = ns_fft/2 + 1;                  % number of samples in a range profile    

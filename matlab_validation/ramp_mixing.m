@@ -8,11 +8,11 @@ n_peek = 10;                        % number of profiles to view during processi
 
 c = 299792458;                                   
 Fc = 0;                   
-Fo = 1.1589;                                        
+Fo = 0.1593;                                        
 phi = 0;                                           
 B = 5;  
 
-T_prop = 0;
+T_prop = 2;
 T_up = 10;
 T_down = 10;
 T_ramp = T_up + T_down;
