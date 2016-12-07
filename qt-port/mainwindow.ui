@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>660</width>
-    <height>572</height>
+    <width>1041</width>
+    <height>634</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,7 +19,7 @@
      <rect>
       <x>10</x>
       <y>100</y>
-      <width>631</width>
+      <width>281</width>
       <height>211</height>
      </rect>
     </property>
@@ -169,19 +169,6 @@
       </property>
      </item>
     </widget>
-    <widget class="QPushButton" name="b_openFile">
-     <property name="geometry">
-      <rect>
-       <x>520</x>
-       <y>31</y>
-       <width>80</width>
-       <height>22</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Open</string>
-     </property>
-    </widget>
     <widget class="QLabel" name="l_filePath">
      <property name="geometry">
       <rect>
@@ -195,12 +182,12 @@
       <string>File Path:</string>
      </property>
     </widget>
-    <widget class="QLineEdit" name="e_filePath">
+    <widget class="QLineEdit" name="e_datasetPath">
      <property name="geometry">
       <rect>
        <x>160</x>
        <y>30</y>
-       <width>341</width>
+       <width>111</width>
        <height>22</height>
       </rect>
      </property>
@@ -211,8 +198,8 @@
      <rect>
       <x>10</x>
       <y>330</y>
-      <width>631</width>
-      <height>191</height>
+      <width>281</width>
+      <height>231</height>
      </rect>
     </property>
     <property name="title">
@@ -222,7 +209,7 @@
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>30</y>
+       <y>60</y>
        <width>201</width>
        <height>16</height>
       </rect>
@@ -235,7 +222,7 @@
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>60</y>
+       <y>90</y>
        <width>161</width>
        <height>16</height>
       </rect>
@@ -248,7 +235,7 @@
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>90</y>
+       <y>120</y>
        <width>131</width>
        <height>16</height>
       </rect>
@@ -261,7 +248,7 @@
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>120</y>
+       <y>150</y>
        <width>131</width>
        <height>16</height>
       </rect>
@@ -274,7 +261,7 @@
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>150</y>
+       <y>180</y>
        <width>141</width>
        <height>16</height>
       </rect>
@@ -283,11 +270,11 @@
       <string>Doppler Window:</string>
      </property>
     </widget>
-    <widget class="QCheckBox" name="checkBox">
+    <widget class="QCheckBox" name="c_dopplerEnabled">
      <property name="geometry">
       <rect>
        <x>160</x>
-       <y>30</y>
+       <y>60</y>
        <width>85</width>
        <height>20</height>
       </rect>
@@ -300,7 +287,7 @@
      <property name="geometry">
       <rect>
        <x>160</x>
-       <y>120</y>
+       <y>150</y>
        <width>111</width>
        <height>22</height>
       </rect>
@@ -330,7 +317,7 @@
      <property name="geometry">
       <rect>
        <x>160</x>
-       <y>150</y>
+       <y>180</y>
        <width>111</width>
        <height>22</height>
       </rect>
@@ -356,42 +343,7 @@
       </property>
      </item>
     </widget>
-    <widget class="QComboBox" name="comboBox_3">
-     <property name="geometry">
-      <rect>
-       <x>160</x>
-       <y>60</y>
-       <width>111</width>
-       <height>22</height>
-      </rect>
-     </property>
-     <item>
-      <property name="text">
-       <string>32</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>64</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>128</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>256</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>512</string>
-      </property>
-     </item>
-    </widget>
-    <widget class="QComboBox" name="comboBox_4">
+    <widget class="QComboBox" name="c_dopplerPoints">
      <property name="geometry">
       <rect>
        <x>160</x>
@@ -426,13 +378,74 @@
       </property>
      </item>
     </widget>
+    <widget class="QComboBox" name="c_updateRate">
+     <property name="geometry">
+      <rect>
+       <x>160</x>
+       <y>120</y>
+       <width>111</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <item>
+      <property name="text">
+       <string>32</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>64</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>128</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>256</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>512</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QLabel" name="label_17">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>30</y>
+       <width>59</width>
+       <height>14</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Debug</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="c_debugEnabled">
+     <property name="geometry">
+      <rect>
+       <x>160</x>
+       <y>30</y>
+       <width>85</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Enabled</string>
+     </property>
+    </widget>
    </widget>
    <widget class="QGroupBox" name="groupBox_3">
     <property name="geometry">
      <rect>
       <x>10</x>
       <y>20</y>
-      <width>631</width>
+      <width>281</width>
       <height>61</height>
      </rect>
     </property>
@@ -452,29 +465,55 @@
       <string>File Path:</string>
      </property>
     </widget>
-    <widget class="QLineEdit" name="lineEdit">
+    <widget class="QLineEdit" name="e_summaryPath">
      <property name="geometry">
       <rect>
        <x>160</x>
        <y>30</y>
-       <width>341</width>
+       <width>111</width>
        <height>22</height>
       </rect>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton">
-     <property name="geometry">
-      <rect>
-       <x>520</x>
-       <y>30</y>
-       <width>80</width>
-       <height>22</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Open</string>
-     </property>
-    </widget>
+   </widget>
+   <widget class="QPushButton" name="b_start">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>570</y>
+      <width>80</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Start</string>
+    </property>
+   </widget>
+   <widget class="QGroupBox" name="groupBox_4">
+    <property name="geometry">
+     <rect>
+      <x>300</x>
+      <y>20</y>
+      <width>361</width>
+      <height>541</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>Range-Time-Intensity</string>
+    </property>
+   </widget>
+   <widget class="QGroupBox" name="groupBox_5">
+    <property name="geometry">
+     <rect>
+      <x>670</x>
+      <y>20</y>
+      <width>361</width>
+      <height>541</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>Range-Doppler</string>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
@@ -482,7 +521,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>660</width>
+     <width>1041</width>
      <height>19</height>
     </rect>
    </property>

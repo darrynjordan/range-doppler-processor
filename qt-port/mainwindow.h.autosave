@@ -20,7 +20,7 @@ private:
 
 private slots:
     void openSummaryFile(void);
-    void start(void);
+    void startProcessing(void);
 
 public:
     explicit MainWindow(QWidget *parent = 0);

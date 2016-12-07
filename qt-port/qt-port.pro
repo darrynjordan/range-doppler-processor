@@ -11,10 +11,30 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TARGET = qt-port
 TEMPLATE = app
 
+INCLUDEPATH += /usr/include/opencv
+
+LIBS += -L/usr/lib -lopencv_core -lopencv_highgui -lopencv_imgproc
+LIBS += -lfftw3
+
 
 SOURCES += main.cpp\
-        mainwindow.cpp
+        mainwindow.cpp \
+    timer.cpp \
+    processor.cpp \
+    logger.cpp \
+    taper.cpp \
+    plot.cpp \
+    colour.cpp \
+    ConvertUTF.c
 
-HEADERS  += mainwindow.h
+HEADERS  += mainwindow.h \
+    timer.h \
+    processor.h \
+    plot.h \
+    taper.h \
+    logger.h \
+    colour.h \
+    ConvertUTF.h \
+    SimpleIni.h
 
 FORMS    += mainwindow.ui

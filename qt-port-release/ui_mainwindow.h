@@ -42,24 +42,27 @@ public:
     QLineEdit *e_downPeriod;
     QLineEdit *e_trim;
     QComboBox *comboBox_5;
-    QPushButton *b_openFile;
     QLabel *l_filePath;
-    QLineEdit *e_filePath;
+    QLineEdit *e_datasetPath;
     QGroupBox *groupBox_2;
     QLabel *label_6;
     QLabel *label_7;
     QLabel *label_8;
     QLabel *label_9;
     QLabel *label_10;
-    QCheckBox *checkBox;
+    QCheckBox *c_dopplerEnabled;
     QComboBox *comboBox;
     QComboBox *comboBox_2;
-    QComboBox *comboBox_3;
-    QComboBox *comboBox_4;
+    QComboBox *c_dopplerPoints;
+    QComboBox *c_updateRate;
+    QLabel *label_17;
+    QCheckBox *c_debugEnabled;
     QGroupBox *groupBox_3;
     QLabel *label_11;
-    QLineEdit *lineEdit;
-    QPushButton *pushButton;
+    QLineEdit *e_summaryPath;
+    QPushButton *b_start;
+    QGroupBox *groupBox_4;
+    QGroupBox *groupBox_5;
     QMenuBar *menuBar;
     QStatusBar *statusBar;
 
@@ -67,12 +70,12 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(660, 572);
+        MainWindow->resize(1041, 634);
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         groupBox = new QGroupBox(centralWidget);
         groupBox->setObjectName(QStringLiteral("groupBox"));
-        groupBox->setGeometry(QRect(10, 100, 631, 211));
+        groupBox->setGeometry(QRect(10, 100, 281, 211));
         label = new QLabel(groupBox);
         label->setObjectName(QStringLiteral("label"));
         label->setGeometry(QRect(10, 60, 121, 16));
@@ -104,64 +107,73 @@ public:
         comboBox_5 = new QComboBox(groupBox);
         comboBox_5->setObjectName(QStringLiteral("comboBox_5"));
         comboBox_5->setGeometry(QRect(160, 60, 111, 22));
-        b_openFile = new QPushButton(groupBox);
-        b_openFile->setObjectName(QStringLiteral("b_openFile"));
-        b_openFile->setGeometry(QRect(520, 31, 80, 22));
         l_filePath = new QLabel(groupBox);
         l_filePath->setObjectName(QStringLiteral("l_filePath"));
         l_filePath->setGeometry(QRect(10, 30, 56, 16));
-        e_filePath = new QLineEdit(groupBox);
-        e_filePath->setObjectName(QStringLiteral("e_filePath"));
-        e_filePath->setGeometry(QRect(160, 30, 341, 22));
+        e_datasetPath = new QLineEdit(groupBox);
+        e_datasetPath->setObjectName(QStringLiteral("e_datasetPath"));
+        e_datasetPath->setGeometry(QRect(160, 30, 111, 22));
         groupBox_2 = new QGroupBox(centralWidget);
         groupBox_2->setObjectName(QStringLiteral("groupBox_2"));
-        groupBox_2->setGeometry(QRect(10, 330, 631, 191));
+        groupBox_2->setGeometry(QRect(10, 330, 281, 231));
         label_6 = new QLabel(groupBox_2);
         label_6->setObjectName(QStringLiteral("label_6"));
-        label_6->setGeometry(QRect(10, 30, 201, 16));
+        label_6->setGeometry(QRect(10, 60, 201, 16));
         label_7 = new QLabel(groupBox_2);
         label_7->setObjectName(QStringLiteral("label_7"));
-        label_7->setGeometry(QRect(10, 60, 161, 16));
+        label_7->setGeometry(QRect(10, 90, 161, 16));
         label_8 = new QLabel(groupBox_2);
         label_8->setObjectName(QStringLiteral("label_8"));
-        label_8->setGeometry(QRect(10, 90, 131, 16));
+        label_8->setGeometry(QRect(10, 120, 131, 16));
         label_9 = new QLabel(groupBox_2);
         label_9->setObjectName(QStringLiteral("label_9"));
-        label_9->setGeometry(QRect(10, 120, 131, 16));
+        label_9->setGeometry(QRect(10, 150, 131, 16));
         label_10 = new QLabel(groupBox_2);
         label_10->setObjectName(QStringLiteral("label_10"));
-        label_10->setGeometry(QRect(10, 150, 141, 16));
-        checkBox = new QCheckBox(groupBox_2);
-        checkBox->setObjectName(QStringLiteral("checkBox"));
-        checkBox->setGeometry(QRect(160, 30, 85, 20));
+        label_10->setGeometry(QRect(10, 180, 141, 16));
+        c_dopplerEnabled = new QCheckBox(groupBox_2);
+        c_dopplerEnabled->setObjectName(QStringLiteral("c_dopplerEnabled"));
+        c_dopplerEnabled->setGeometry(QRect(160, 60, 85, 20));
         comboBox = new QComboBox(groupBox_2);
         comboBox->setObjectName(QStringLiteral("comboBox"));
-        comboBox->setGeometry(QRect(160, 120, 111, 22));
+        comboBox->setGeometry(QRect(160, 150, 111, 22));
         comboBox_2 = new QComboBox(groupBox_2);
         comboBox_2->setObjectName(QStringLiteral("comboBox_2"));
-        comboBox_2->setGeometry(QRect(160, 150, 111, 22));
-        comboBox_3 = new QComboBox(groupBox_2);
-        comboBox_3->setObjectName(QStringLiteral("comboBox_3"));
-        comboBox_3->setGeometry(QRect(160, 60, 111, 22));
-        comboBox_4 = new QComboBox(groupBox_2);
-        comboBox_4->setObjectName(QStringLiteral("comboBox_4"));
-        comboBox_4->setGeometry(QRect(160, 90, 111, 22));
+        comboBox_2->setGeometry(QRect(160, 180, 111, 22));
+        c_dopplerPoints = new QComboBox(groupBox_2);
+        c_dopplerPoints->setObjectName(QStringLiteral("c_dopplerPoints"));
+        c_dopplerPoints->setGeometry(QRect(160, 90, 111, 22));
+        c_updateRate = new QComboBox(groupBox_2);
+        c_updateRate->setObjectName(QStringLiteral("c_updateRate"));
+        c_updateRate->setGeometry(QRect(160, 120, 111, 22));
+        label_17 = new QLabel(groupBox_2);
+        label_17->setObjectName(QStringLiteral("label_17"));
+        label_17->setGeometry(QRect(10, 30, 59, 14));
+        c_debugEnabled = new QCheckBox(groupBox_2);
+        c_debugEnabled->setObjectName(QStringLiteral("c_debugEnabled"));
+        c_debugEnabled->setGeometry(QRect(160, 30, 85, 20));
         groupBox_3 = new QGroupBox(centralWidget);
         groupBox_3->setObjectName(QStringLiteral("groupBox_3"));
-        groupBox_3->setGeometry(QRect(10, 20, 631, 61));
+        groupBox_3->setGeometry(QRect(10, 20, 281, 61));
         label_11 = new QLabel(groupBox_3);
         label_11->setObjectName(QStringLiteral("label_11"));
         label_11->setGeometry(QRect(10, 30, 59, 14));
-        lineEdit = new QLineEdit(groupBox_3);
-        lineEdit->setObjectName(QStringLiteral("lineEdit"));
-        lineEdit->setGeometry(QRect(160, 30, 341, 22));
-        pushButton = new QPushButton(groupBox_3);
-        pushButton->setObjectName(QStringLiteral("pushButton"));
-        pushButton->setGeometry(QRect(520, 30, 80, 22));
+        e_summaryPath = new QLineEdit(groupBox_3);
+        e_summaryPath->setObjectName(QStringLiteral("e_summaryPath"));
+        e_summaryPath->setGeometry(QRect(160, 30, 111, 22));
+        b_start = new QPushButton(centralWidget);
+        b_start->setObjectName(QStringLiteral("b_start"));
+        b_start->setGeometry(QRect(10, 570, 80, 22));
+        groupBox_4 = new QGroupBox(centralWidget);
+        groupBox_4->setObjectName(QStringLiteral("groupBox_4"));
+        groupBox_4->setGeometry(QRect(300, 20, 361, 541));
+        groupBox_5 = new QGroupBox(centralWidget);
+        groupBox_5->setObjectName(QStringLiteral("groupBox_5"));
+        groupBox_5->setGeometry(QRect(670, 20, 361, 541));
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 660, 19));
+        menuBar->setGeometry(QRect(0, 0, 1041, 19));
         MainWindow->setMenuBar(menuBar);
         statusBar = new QStatusBar(MainWindow);
         statusBar->setObjectName(QStringLiteral("statusBar"));
@@ -189,7 +201,6 @@ public:
          << QApplication::translate("MainWindow", "256", 0)
          << QApplication::translate("MainWindow", "512", 0)
         );
-        b_openFile->setText(QApplication::translate("MainWindow", "Open", 0));
         l_filePath->setText(QApplication::translate("MainWindow", "File Path:", 0));
         groupBox_2->setTitle(QApplication::translate("MainWindow", "Processing", 0));
         label_6->setText(QApplication::translate("MainWindow", "Doppler Processing:", 0));
@@ -197,7 +208,7 @@ public:
         label_8->setText(QApplication::translate("MainWindow", "Update Rate:", 0));
         label_9->setText(QApplication::translate("MainWindow", "Range Window:", 0));
         label_10->setText(QApplication::translate("MainWindow", "Doppler Window:", 0));
-        checkBox->setText(QApplication::translate("MainWindow", "Enabled", 0));
+        c_dopplerEnabled->setText(QApplication::translate("MainWindow", "Enabled", 0));
         comboBox->clear();
         comboBox->insertItems(0, QStringList()
          << QApplication::translate("MainWindow", "Uniform", 0)
@@ -212,25 +223,29 @@ public:
          << QApplication::translate("MainWindow", "Hamming", 0)
          << QApplication::translate("MainWindow", "Blackman", 0)
         );
-        comboBox_3->clear();
-        comboBox_3->insertItems(0, QStringList()
+        c_dopplerPoints->clear();
+        c_dopplerPoints->insertItems(0, QStringList()
          << QApplication::translate("MainWindow", "32", 0)
          << QApplication::translate("MainWindow", "64", 0)
          << QApplication::translate("MainWindow", "128", 0)
          << QApplication::translate("MainWindow", "256", 0)
          << QApplication::translate("MainWindow", "512", 0)
         );
-        comboBox_4->clear();
-        comboBox_4->insertItems(0, QStringList()
+        c_updateRate->clear();
+        c_updateRate->insertItems(0, QStringList()
          << QApplication::translate("MainWindow", "32", 0)
          << QApplication::translate("MainWindow", "64", 0)
          << QApplication::translate("MainWindow", "128", 0)
          << QApplication::translate("MainWindow", "256", 0)
          << QApplication::translate("MainWindow", "512", 0)
         );
+        label_17->setText(QApplication::translate("MainWindow", "Debug", 0));
+        c_debugEnabled->setText(QApplication::translate("MainWindow", "Enabled", 0));
         groupBox_3->setTitle(QApplication::translate("MainWindow", "Summary File", 0));
         label_11->setText(QApplication::translate("MainWindow", "File Path:", 0));
-        pushButton->setText(QApplication::translate("MainWindow", "Open", 0));
+        b_start->setText(QApplication::translate("MainWindow", "Start", 0));
+        groupBox_4->setTitle(QApplication::translate("MainWindow", "Range-Time-Intensity", 0));
+        groupBox_5->setTitle(QApplication::translate("MainWindow", "Range-Doppler", 0));
     } // retranslateUi
 
 };
