@@ -25,7 +25,7 @@ SOURCES += main.cpp\
     taper.cpp \
     plot.cpp \
     colour.cpp \
-    ConvertUTF.c
+    convertUTF.c
 
 HEADERS  += mainwindow.h \
     timer.h \
@@ -34,7 +34,7 @@ HEADERS  += mainwindow.h \
     taper.h \
     logger.h \
     colour.h \
-    ConvertUTF.h \
-    SimpleIni.h
+    convertUTF.h \
+    simpleIni.h
 
 FORMS    += mainwindow.ui

@@ -4,6 +4,8 @@
 #include <QMainWindow>
 #include "timer.h"
 #include "processor.h"
+#include "opencv/cv.h"
+#include <QLabel>
 
 namespace Ui {
 class MainWindow;
@@ -18,16 +20,15 @@ private:
     Timer timer;
     Processor processor;
 
+
 private slots:
     void openSummaryFile(void);
-    void start(void);
+    void process(void);
+    void updatePlot(cv::Mat& image, QLabel* widget);
 
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
-
-
-
 };
 
 #endif // MAINWINDOW_H

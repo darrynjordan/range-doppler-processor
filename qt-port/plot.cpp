@@ -200,7 +200,7 @@ void OpenCVPlot::createWindow(std::string title, int ns_row)
     cv::resizeWindow(windowName, width, height);  
     cv::moveWindow(windowName, xPos, yPos);    
     
-    stringStream.str(std::string()); 
+    stringStream.str("");
     stringStream << windowName << " Control Window";
     controlWindowName = stringStream.str();
     
@@ -255,7 +255,7 @@ void OpenCVPlot::plot(void)
 		rawMat.release();
 	
 	cv::imshow(windowName, processedMat);
-	cv::waitKey(slowSlider + 1);
+    cv::waitKey(slowSlider + 1);
 }
 
 

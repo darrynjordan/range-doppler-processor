@@ -18,7 +18,8 @@ class OpenCVPlot
     //bit of fancy redirection to call a class-member function 'statically'
     static void onChange(int v, void *ptr)
 	{
-		OpenCVPlot *that = (OpenCVPlot*)ptr;
+        std::cout << v << std::endl;
+        OpenCVPlot *that = (OpenCVPlot*)ptr;
 		that->plot();
 	}
 	

@@ -192,8 +192,8 @@
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef INCLUDED_SimpleIni_h
-#define INCLUDED_SimpleIni_h
+#ifndef INCLUDED_simpleIni_h
+#define INCLUDED_simpleIni_h
 
 #if defined(_MSC_VER) && (_MSC_VER >= 1020)
 # pragma once
@@ -2844,7 +2844,7 @@ public:
 #define SI_NoCase   SI_GenericNoCase
 
 #include <wchar.h>
-#include "ConvertUTF.h"
+#include "convertUTF.h"
 
 /**
  * Converts UTF-8 to a wchar_t (or equivalent) using the Unicode reference
@@ -3433,5 +3433,5 @@ typedef CSimpleIniTempl<wchar_t,
 # pragma warning (pop)
 #endif
 
-#endif // INCLUDED_SimpleIni_h
+#endif // INCLUDED_simpleIni_h
 

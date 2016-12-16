@@ -10,7 +10,7 @@
 #include "timer.h"
 #include "taper.h"
 #include "logger.h"
-#include "SimpleIni.h"
+#include "simpleIni.h"
 
 #define SPEED_OF_LIGHT 299792458
 #define RP_ADC_SR 125e6

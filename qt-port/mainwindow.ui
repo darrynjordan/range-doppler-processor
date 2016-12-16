@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1041</width>
-    <height>634</height>
+    <width>995</width>
+    <height>526</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,469 +18,289 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>100</y>
-      <width>281</width>
-      <height>211</height>
+      <y>20</y>
+      <width>231</width>
+      <height>201</height>
      </rect>
     </property>
     <property name="title">
-     <string>Dataset</string>
+     <string>Dataset Properties</string>
     </property>
-    <widget class="QLabel" name="label">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>60</y>
-       <width>121</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Decimation Factor:</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_2">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>90</y>
-       <width>121</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Sampling Rate:</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_3">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>120</y>
-       <width>121</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Up-Ramp Length:</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_4">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>150</y>
-       <width>141</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Down-Ramp Length:</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_5">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>180</y>
-       <width>59</width>
-       <height>14</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Trim:</string>
-     </property>
-    </widget>
-    <widget class="QLineEdit" name="e_samplingRate">
-     <property name="enabled">
-      <bool>false</bool>
-     </property>
-     <property name="geometry">
-      <rect>
-       <x>160</x>
-       <y>90</y>
-       <width>113</width>
-       <height>22</height>
-      </rect>
-     </property>
-    </widget>
-    <widget class="QLineEdit" name="e_upPeriod">
-     <property name="geometry">
-      <rect>
-       <x>160</x>
-       <y>120</y>
-       <width>113</width>
-       <height>22</height>
-      </rect>
-     </property>
-    </widget>
-    <widget class="QLineEdit" name="e_downPeriod">
-     <property name="geometry">
-      <rect>
-       <x>160</x>
-       <y>150</y>
-       <width>113</width>
-       <height>22</height>
-      </rect>
-     </property>
-    </widget>
-    <widget class="QLineEdit" name="e_trim">
-     <property name="geometry">
-      <rect>
-       <x>160</x>
-       <y>180</y>
-       <width>113</width>
-       <height>22</height>
-      </rect>
-     </property>
-    </widget>
-    <widget class="QComboBox" name="comboBox_5">
-     <property name="geometry">
-      <rect>
-       <x>160</x>
-       <y>60</y>
-       <width>111</width>
-       <height>22</height>
-      </rect>
-     </property>
-     <item>
-      <property name="text">
-       <string>32</string>
-      </property>
+    <layout class="QGridLayout" name="gridLayout">
+     <item row="0" column="0">
+      <widget class="QLabel" name="l_filePath">
+       <property name="text">
+        <string>Date:</string>
+       </property>
+      </widget>
      </item>
-     <item>
-      <property name="text">
-       <string>64</string>
-      </property>
+     <item row="0" column="1">
+      <widget class="QLineEdit" name="e_datasetPath"/>
      </item>
-     <item>
-      <property name="text">
-       <string>128</string>
-      </property>
+     <item row="1" column="0">
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>Decimation Factor:</string>
+       </property>
+      </widget>
      </item>
-     <item>
-      <property name="text">
-       <string>256</string>
-      </property>
+     <item row="1" column="1">
+      <widget class="QComboBox" name="comboBox_5">
+       <item>
+        <property name="text">
+         <string>32</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>64</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>128</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>256</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>512</string>
+        </property>
+       </item>
+      </widget>
      </item>
-     <item>
-      <property name="text">
-       <string>512</string>
-      </property>
+     <item row="2" column="0">
+      <widget class="QLabel" name="label_2">
+       <property name="text">
+        <string>Sampling Rate:</string>
+       </property>
+      </widget>
      </item>
-    </widget>
-    <widget class="QLabel" name="l_filePath">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>30</y>
-       <width>56</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>File Path:</string>
-     </property>
-    </widget>
-    <widget class="QLineEdit" name="e_datasetPath">
-     <property name="geometry">
-      <rect>
-       <x>160</x>
-       <y>30</y>
-       <width>111</width>
-       <height>22</height>
-      </rect>
-     </property>
-    </widget>
+     <item row="2" column="1">
+      <widget class="QLineEdit" name="e_samplingRate">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="0">
+      <widget class="QLabel" name="label_3">
+       <property name="text">
+        <string>Up-Ramp Length:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="1">
+      <widget class="QLineEdit" name="e_upPeriod"/>
+     </item>
+     <item row="4" column="0">
+      <widget class="QLabel" name="label_4">
+       <property name="text">
+        <string>Down-Ramp Length:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="1">
+      <widget class="QLineEdit" name="e_downPeriod"/>
+     </item>
+     <item row="5" column="0">
+      <widget class="QLabel" name="label_5">
+       <property name="text">
+        <string>Trim:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="1">
+      <widget class="QLineEdit" name="e_trim"/>
+     </item>
+    </layout>
    </widget>
    <widget class="QGroupBox" name="groupBox_2">
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>330</y>
-      <width>281</width>
+      <y>240</y>
+      <width>231</width>
       <height>231</height>
      </rect>
     </property>
     <property name="title">
-     <string>Processing</string>
+     <string>Processing Configuration</string>
     </property>
-    <widget class="QLabel" name="label_6">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>60</y>
-       <width>201</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Doppler Processing:</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_7">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>90</y>
-       <width>161</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Doppler Points:</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_8">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>120</y>
-       <width>131</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Update Rate:</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_9">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>150</y>
-       <width>131</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Range Window:</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_10">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>180</y>
-       <width>141</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Doppler Window:</string>
-     </property>
-    </widget>
-    <widget class="QCheckBox" name="c_dopplerEnabled">
-     <property name="geometry">
-      <rect>
-       <x>160</x>
-       <y>60</y>
-       <width>85</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Enabled</string>
-     </property>
-    </widget>
-    <widget class="QComboBox" name="comboBox">
-     <property name="geometry">
-      <rect>
-       <x>160</x>
-       <y>150</y>
-       <width>111</width>
-       <height>22</height>
-      </rect>
-     </property>
-     <item>
-      <property name="text">
-       <string>Uniform</string>
-      </property>
+    <layout class="QGridLayout" name="gridLayout_2">
+     <item row="0" column="0">
+      <widget class="QLabel" name="label_17">
+       <property name="text">
+        <string>Debug</string>
+       </property>
+      </widget>
      </item>
-     <item>
-      <property name="text">
-       <string>Hanning</string>
-      </property>
+     <item row="0" column="1">
+      <widget class="QCheckBox" name="c_debugEnabled">
+       <property name="text">
+        <string>Enabled</string>
+       </property>
+      </widget>
      </item>
-     <item>
-      <property name="text">
-       <string>Hamming</string>
-      </property>
+     <item row="1" column="0">
+      <widget class="QLabel" name="label_6">
+       <property name="text">
+        <string>Doppler Processing:</string>
+       </property>
+      </widget>
      </item>
-     <item>
-      <property name="text">
-       <string>Blackman</string>
-      </property>
+     <item row="1" column="1">
+      <widget class="QCheckBox" name="c_dopplerEnabled">
+       <property name="text">
+        <string>Enabled</string>
+       </property>
+      </widget>
      </item>
-    </widget>
-    <widget class="QComboBox" name="comboBox_2">
-     <property name="geometry">
-      <rect>
-       <x>160</x>
-       <y>180</y>
-       <width>111</width>
-       <height>22</height>
-      </rect>
-     </property>
-     <item>
-      <property name="text">
-       <string>Uniform</string>
-      </property>
+     <item row="2" column="0">
+      <widget class="QLabel" name="label_7">
+       <property name="text">
+        <string>Doppler Points:</string>
+       </property>
+      </widget>
      </item>
-     <item>
-      <property name="text">
-       <string>Hanning</string>
-      </property>
+     <item row="2" column="1">
+      <widget class="QComboBox" name="c_dopplerPoints">
+       <item>
+        <property name="text">
+         <string>32</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>64</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>128</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>256</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>512</string>
+        </property>
+       </item>
+      </widget>
      </item>
-     <item>
-      <property name="text">
-       <string>Hamming</string>
-      </property>
+     <item row="3" column="0">
+      <widget class="QLabel" name="label_8">
+       <property name="text">
+        <string>Update Rate:</string>
+       </property>
+      </widget>
      </item>
-     <item>
-      <property name="text">
-       <string>Blackman</string>
-      </property>
+     <item row="3" column="1">
+      <widget class="QComboBox" name="c_updateRate">
+       <item>
+        <property name="text">
+         <string>32</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>64</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>128</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>256</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>512</string>
+        </property>
+       </item>
+      </widget>
      </item>
-    </widget>
-    <widget class="QComboBox" name="c_dopplerPoints">
-     <property name="geometry">
-      <rect>
-       <x>160</x>
-       <y>90</y>
-       <width>111</width>
-       <height>22</height>
-      </rect>
-     </property>
-     <item>
-      <property name="text">
-       <string>32</string>
-      </property>
+     <item row="4" column="0">
+      <widget class="QLabel" name="label_9">
+       <property name="text">
+        <string>Range Window:</string>
+       </property>
+      </widget>
      </item>
-     <item>
-      <property name="text">
-       <string>64</string>
-      </property>
+     <item row="4" column="1">
+      <widget class="QComboBox" name="comboBox">
+       <item>
+        <property name="text">
+         <string>Uniform</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Hanning</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Hamming</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Blackman</string>
+        </property>
+       </item>
+      </widget>
      </item>
-     <item>
-      <property name="text">
-       <string>128</string>
-      </property>
+     <item row="5" column="0">
+      <widget class="QLabel" name="label_10">
+       <property name="text">
+        <string>Doppler Window:</string>
+       </property>
+      </widget>
      </item>
-     <item>
-      <property name="text">
-       <string>256</string>
-      </property>
+     <item row="5" column="1">
+      <widget class="QComboBox" name="comboBox_2">
+       <item>
+        <property name="text">
+         <string>Uniform</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Hanning</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Hamming</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Blackman</string>
+        </property>
+       </item>
+      </widget>
      </item>
-     <item>
-      <property name="text">
-       <string>512</string>
-      </property>
-     </item>
-    </widget>
-    <widget class="QComboBox" name="c_updateRate">
-     <property name="geometry">
-      <rect>
-       <x>160</x>
-       <y>120</y>
-       <width>111</width>
-       <height>22</height>
-      </rect>
-     </property>
-     <item>
-      <property name="text">
-       <string>32</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>64</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>128</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>256</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>512</string>
-      </property>
-     </item>
-    </widget>
-    <widget class="QLabel" name="label_17">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>30</y>
-       <width>59</width>
-       <height>14</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Debug</string>
-     </property>
-    </widget>
-    <widget class="QCheckBox" name="c_debugEnabled">
-     <property name="geometry">
-      <rect>
-       <x>160</x>
-       <y>30</y>
-       <width>85</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Enabled</string>
-     </property>
-    </widget>
-   </widget>
-   <widget class="QGroupBox" name="groupBox_3">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>20</y>
-      <width>281</width>
-      <height>61</height>
-     </rect>
-    </property>
-    <property name="title">
-     <string>Summary File</string>
-    </property>
-    <widget class="QLabel" name="label_11">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>30</y>
-       <width>59</width>
-       <height>14</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>File Path:</string>
-     </property>
-    </widget>
-    <widget class="QLineEdit" name="e_summaryPath">
-     <property name="geometry">
-      <rect>
-       <x>160</x>
-       <y>30</y>
-       <width>111</width>
-       <height>22</height>
-      </rect>
-     </property>
-    </widget>
+    </layout>
    </widget>
    <widget class="QPushButton" name="b_start">
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>570</y>
+      <y>480</y>
       <width>80</width>
       <height>22</height>
      </rect>
@@ -492,23 +312,39 @@
    <widget class="QGroupBox" name="groupBox_4">
     <property name="geometry">
      <rect>
-      <x>300</x>
+      <x>250</x>
       <y>20</y>
       <width>361</width>
-      <height>541</height>
+      <height>451</height>
      </rect>
     </property>
     <property name="title">
      <string>Range-Time-Intensity</string>
     </property>
+    <widget class="QLabel" name="rti_plot">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>30</y>
+       <width>341</width>
+       <height>321</height>
+      </rect>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::Panel</enum>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
    </widget>
    <widget class="QGroupBox" name="groupBox_5">
     <property name="geometry">
      <rect>
-      <x>670</x>
+      <x>620</x>
       <y>20</y>
       <width>361</width>
-      <height>541</height>
+      <height>451</height>
      </rect>
     </property>
     <property name="title">
@@ -521,14 +357,53 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1041</width>
+     <width>995</width>
      <height>19</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="a_open_config"/>
+    <addaction name="separator"/>
+    <addaction name="a_exit"/>
+   </widget>
+   <widget class="QMenu" name="menuAbout">
+    <property name="title">
+     <string>About</string>
+    </property>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuAbout"/>
   </widget>
-  <widget class="QStatusBar" name="statusBar"/>
+  <action name="a_open_config">
+   <property name="text">
+    <string>Open Config File</string>
+   </property>
+  </action>
+  <action name="a_exit">
+   <property name="text">
+    <string>Exit</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
+ <tabstops>
+  <tabstop>e_datasetPath</tabstop>
+  <tabstop>comboBox_5</tabstop>
+  <tabstop>e_samplingRate</tabstop>
+  <tabstop>e_upPeriod</tabstop>
+  <tabstop>e_downPeriod</tabstop>
+  <tabstop>e_trim</tabstop>
+  <tabstop>c_debugEnabled</tabstop>
+  <tabstop>c_dopplerEnabled</tabstop>
+  <tabstop>c_dopplerPoints</tabstop>
+  <tabstop>c_updateRate</tabstop>
+  <tabstop>comboBox</tabstop>
+  <tabstop>comboBox_2</tabstop>
+  <tabstop>b_start</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

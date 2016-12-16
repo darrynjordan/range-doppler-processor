@@ -1,7 +1,6 @@
 #include "mainwindow.h"
 #include <QApplication>
 
-
 #define VERSION "0.2.0"
 
 void splash(void);
@@ -9,11 +8,11 @@ void splash(void);
 int main(int argc, char *argv[])
 {    
     QApplication a(argc, argv);
-    MainWindow main_window;
+    MainWindow mainwindow;
 
     splash();
 
-    main_window.show();
+    mainwindow.show();
 
     return a.exec();
 }
