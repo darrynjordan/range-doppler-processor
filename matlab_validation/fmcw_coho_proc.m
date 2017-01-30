@@ -2,8 +2,9 @@
 
 n_peek = 10;                        % number of profiles to view during processing
 is_windowing = 0;                   % enable tapering
-is_sub = 0;                         % enable coherent subtraction
-is_g2_out = 1;                      % enable the output of g2 compatible data
+is_sub = 1;                         % enable coherent subtraction
+n_ref = 1;                          % index of profile to use as a reference for subtraction
+is_g2_out = 0;                      % enable the output of g2 compatible data
 
 %% Experiment parameters
 
@@ -18,7 +19,7 @@ t_ramp = t_up + t_down;             % total modulation period per ramp [s]
 
 %% Extract raw data
 
-f_in_id = fopen('/home/darryn/Dropbox/Datasets/Loop-Back/MiloSAR/01_24_10_42_15/ch1.bin');
+f_in_id = fopen('/home/darryn/Dropbox/Datasets/Loop-Back/MiloSAR/01_30_08_51_08/ch1.bin');
 raw_data = fread(f_in_id, Inf, 'int16');
 
 % f_c = 1.00001e6;    
@@ -45,7 +46,7 @@ ylabel('Arbitrary Amplitude');
 
 % user identifies correct location to begin signal chopping
 pause;
-ns_chop = 2.227e4;
+ns_chop = 2.85e4;
 raw_data = raw_data(ns_chop : length(raw_data)); 
 
 % remove dc offset
@@ -83,7 +84,7 @@ R_fft = linspace(0, r_rec, ns_profile);                  % range vector for sing
 RTI = zeros(ns_profile, n_ramps);
 profile = zeros(ns_profile, 1);
 int_profile = zeros(ns_profile, 1);
-%ref_profile = zeros(ns_profile, 1);
+ref_profile = zeros(ns_profile, 1);
 
 %% Per-pulse processing
 for i = 1 : n_ramps
@@ -102,12 +103,19 @@ for i = 1 : n_ramps
     end;
     
     beat_fft = fft(beat, ns_fft); 
-    profile = beat_fft(1 : ns_profile);
-    int_profile = int_profile + profile;
+    profile = beat_fft(1 : ns_profile);    
     
     if(is_sub)
-        profile = profile - ref_profile;        
+%        if(i == n_ref)
+%            ref_profile = profile;
+%       end;
+        
+        profile = profile - ref_profile;  
+        ref_profile = profile;
+        
     end;    
+    
+    int_profile = int_profile + profile;
     
     if(is_g2_out)
         for k = 1 : ns_profile
@@ -135,7 +143,7 @@ for i = 1 : n_ramps
         title('Freq Domain');
         xlabel('Frequency [MHz]');
         ylabel('Amplitude [dB]');
-        %ylim([80 160]);  
+        %ylim([50 180]);  
         xlim([-0.1 (max(F_fft) + 0.1)]);
         
         pause;
@@ -164,7 +172,14 @@ xlabel('Slow Time [s]');
 colorbar;
 
 fclose(f_in_id);
-fclose(f_out_id);
+
+if (is_g2_out)
+    fclose(f_out_id);
+end;
+
+pause;
+
+close all;
 
  
 
