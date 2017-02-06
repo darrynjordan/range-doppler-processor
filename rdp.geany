@@ -29,12 +29,11 @@ long_line_column=72
 
 [files]
 current_page=1
-FILE_NAME_0=0;C++;0;EUTF-8;1;1;0;%2Fhome%2Fdarryn%2FGit%2Frange_doppler_processor%2Fsource%2Fmain.cpp;0;4
-FILE_NAME_1=668;C++;0;EUTF-8;1;1;0;%2Fhome%2Fdarryn%2FGit%2Frange_doppler_processor%2Fsource%2Fplot.cpp;0;4
-FILE_NAME_2=0;C;0;EUTF-8;1;1;0;%2Fhome%2Fdarryn%2FGit%2Frange_doppler_processor%2Fsource%2Fplot.h;0;4
+FILE_NAME_0=1103;C++;0;EUTF-8;1;1;0;%2Fhome%2Fdarryn%2FGit%2Frange-doppler-processor%2Fsource%2Fmain.cpp;0;4
+FILE_NAME_1=2628;C++;0;EUTF-8;1;1;0;%2Fhome%2Fdarryn%2FGit%2Frange-doppler-processor%2Fsource%2Fprocessor.cpp;0;4
 
 [VTE]
-last_dir=/home/darryn/Git/range_doppler_processor/build
+last_dir=/home/darryn/Git/range-doppler-processor/build
 
 [build-menu]
 NF_00_LB=_Make

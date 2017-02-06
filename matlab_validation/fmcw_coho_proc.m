@@ -3,7 +3,7 @@
 n_peek = 10;                        % number of profiles to view during processing
 is_windowing = 0;                   % enable tapering
 is_sub = 0;                         % enable coherent subtraction
-is_g2_out = 1;                      % enable the output of g2 compatible data
+is_g2_out = 0;                      % enable the output of g2 compatible data
 
 %% Experiment parameters
 
@@ -18,7 +18,7 @@ t_ramp = t_up + t_down;             % total modulation period per ramp [s]
 
 %% Extract raw data
 
-f_in_id = fopen('/home/darryn/Dropbox/Datasets/Loop-Back/MiloSAR/01_24_10_42_15/ch1.bin');
+f_in_id = fopen('/home/darryn/Dropbox/Datasets/Loop-Back/MiloSAR/01_30_08_51_08/ch1.bin');
 raw_data = fread(f_in_id, Inf, 'int16');
 
 % f_c = 1.00001e6;    
@@ -95,14 +95,15 @@ for i = 1 : n_ramps
         continue;
     end;
     
-    beat = raw_data(start : stop);          
-  
+    beat = raw_data(start : stop);    
+    
     if(is_windowing)
         beat = beat.*hamming(ns_padded);
     end;
     
     beat_fft = fft(beat, ns_fft); 
     profile = beat_fft(1 : ns_profile);
+    
     int_profile = int_profile + profile;
     
     if(is_sub)
@@ -123,11 +124,11 @@ for i = 1 : n_ramps
         figure(2);
         
         subplot(1,2,1);
-        plot(T_padded, beat);
+        plot(T_padded, real(beat));
         title('Time Domain');
         xlabel('Time [s]');
         ylabel('Amplitude');
-        %xlim([0 10e-6]);
+        xlim([0 10e-6]);
 
 
         subplot(1,2,2);
@@ -164,7 +165,11 @@ xlabel('Slow Time [s]');
 colorbar;
 
 fclose(f_in_id);
-fclose(f_out_id);
+
+if (is_g2_out)
+    fclose(f_out_id);
+end;
+
 
  
 
