@@ -2,7 +2,7 @@
 
 n_peek = 10;                        % number of profiles to view during processing
 is_windowing = 0;                   % enable tapering
-is_sub = 1;                         % enable coherent subtraction
+is_sub = 0;                         % enable coherent subtraction
 n_ref = 1;                          % index of profile to use as a reference for subtraction
 is_g2_out = 0;                      % enable the output of g2 compatible data
 
@@ -96,14 +96,17 @@ for i = 1 : n_ramps
         continue;
     end;
     
-    beat = raw_data(start : stop);          
-  
+    beat = raw_data(start : stop);    
+    
     if(is_windowing)
         beat = beat.*hamming(ns_padded);
     end;
     
     beat_fft = fft(beat, ns_fft); 
-    profile = beat_fft(1 : ns_profile);    
+
+    profile = beat_fft(1 : ns_profile);
+    
+    int_profile = int_profile + profile;
     
     if(is_sub)
 %        if(i == n_ref)
@@ -131,11 +134,11 @@ for i = 1 : n_ramps
         figure(2);
         
         subplot(1,2,1);
-        plot(T_padded, beat);
+        plot(T_padded, real(beat));
         title('Time Domain');
         xlabel('Time [s]');
         ylabel('Amplitude');
-        %xlim([0 10e-6]);
+        xlim([0 10e-6]);
 
 
         subplot(1,2,2);
@@ -180,6 +183,7 @@ end;
 pause;
 
 close all;
+
 
  
 
