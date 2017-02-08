@@ -1,28 +1,17 @@
-%% Processing settings
-
-is_windowing = 0;                   % enable tapering
-is_sub = 0;                         % enable coherent subtraction
-n_peek = 10;                        % number of profiles to view during processing
-
-%% Simulation parameters
-
-c = 299792458;                                   
-Fc = 0;                   
-Fo = 0.0198;                                        
-phi = 0;                                           
+%% Simulation parameters               
+F_c = 0;                   
+F_o = 200;                                                                       
 B = 5;  
 
-T_prop = 7;
-T_up = 10;
-T_down = 10;
+T_prop = 0;
+T_up = 5;
+T_down = 5;
 T_ramp = T_up + T_down;
+K = B/T_ramp;
 
-K_up = B/T_up;
-K_down = B/T_down;
+Fs = 10*(F_c + B + F_o);                               
 
-Fs = 10*(Fc + B + Fo);                               
-
-n_ramps = 8;
+n_ramps = 2;
 ns_ramp = floor(Fs*T_ramp); 
 ns_up = floor(Fs*T_up);
 ns_down = ns_ramp - ns_up;
@@ -35,26 +24,39 @@ ns_profile = ns_fft/2 + 1;
 RTI = zeros(ns_profile, n_ramps - 1);
 
 t_raw  = linspace(0, (ns_dataset - 1)/Fs, ns_dataset);
-t_up   = linspace(0, (ns_up )/Fs, ns_up);
-t_down = linspace((ns_down)/Fs, 0, ns_down);
+t_up   = linspace(0, (ns_up -1)/Fs, ns_up);
+t_down = linspace((-ns_down)/Fs, 0, ns_down);
 
 t_beat = linspace(0, (ns_ramp - 1)/Fs, ns_ramp);
 f_fft  = linspace(0, Fs/2, ns_profile); 
 
-ramp_up = exp(2*pi*1i*(Fc*t_up + K_up/2*t_up.^2) + 1i*phi);
-ramp_down = exp(2*pi*1i*(Fc*t_down - K_down/2*t_down.^2) + 1i*phi);
+synth_1_up_phase = 0;
+synth_2_up_phase = 0;
+synth_1_down_phase = 0;
+synth_2_down_phase = 0;
+synth_1 = 0;
+synth_2 = 0;
 
-synth_1 = [ramp_up ramp_down];
-synth_2 = synth_1.*exp(2*pi*1i*(Fo*t_beat));
+for i = 1 : n_ramps
+    
+    synth_1_up = exp(2*pi*1i*(F_c*t_up + K/2*t_up.^2) + 1i*synth_1_up_phase);
+    synth_2_up = exp(2*pi*1i*((F_c + F_o)*t_up + K/2*t_up.^2) + 1i*synth_2_up_phase);
+    
+    synth_1_down_phase = 2*i*angle(exp(2*pi*1i*(F_c*i*(ns_up/Fs) + K/2*(ns_up/Fs).^2)));
+    synth_2_down_phase = 2*i*angle(exp(2*pi*1i*((F_c + F_o)*i*(ns_up/Fs) + K/2*(ns_up/Fs).^2)));
 
-synth_1 = [synth_1 synth_1];
-synth_1 = [synth_1 synth_1];
-synth_1 = [synth_1 synth_1];
+    synth_1_down = exp(2*pi*1i*(F_c*t_down - K/2*t_down.^2) + 1i*synth_1_down_phase); 
+    synth_2_down = exp(2*pi*1i*((F_c + F_o)*t_down - K/2*t_down.^2) + 1i*synth_2_down_phase);
+    
+    synth_1_up_phase = (i+1)*angle(exp(2*pi*1i*(F_c*i*(ns_up/Fs) + K/2*(ns_up/Fs).^2)));
+    synth_2_up_phase = (i+1)*angle(exp(2*pi*1i*((F_c + F_o)*i*(ns_up/Fs) + K/2*(ns_up/Fs).^2)));
+    
+    synth_1 = [synth_1 synth_1_up synth_1_down];    
+    synth_2 = [synth_2 synth_2_up synth_2_down];
+end;
+
+
 synth_1 = [zeros(1, ns_prop) synth_1]; 
-
-synth_2 = [synth_2 synth_2];
-synth_2 = [synth_2 synth_2];
-synth_2 = [synth_2 synth_2];
 synth_2 = [synth_2 zeros(1, ns_prop)];
 
 raw_data = conj(synth_1).*synth_2;
@@ -71,10 +73,6 @@ for i = 1 : n_ramps
     
     beat = raw_data(start : stop);          
   
-    if(is_windowing)
-        beat = beat.*hamming(ns_ramp)';
-    end;
-    
     chop_fft = fft(beat, ns_fft); 
     chop_profile = chop_fft(1 : ns_profile);
     
