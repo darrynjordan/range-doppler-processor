@@ -5,7 +5,7 @@ FRAC_NUM = 671089;
 F_ref = 4.0625; %getVco(FRAC_NUM)*10^6;
 T_ramp = 5; %LEN/(100e6);
 PRF = 1/T_ramp;
-phi = 0;
+phi = pi;
 
 F_s = 20; %125e6/32;   
 
@@ -21,7 +21,7 @@ t_raw  = linspace(0, (ns_dataset - 1)/F_s, ns_dataset);
 t_beat = linspace(0, (ns_ramp - 1)/F_s, ns_ramp);
 f_profile = linspace(0, F_s/2, ns_profile); 
 
-raw_data = exp(1i*2*pi*F_ref*t_raw + phi) + exp(1i*2*pi*(6.4062)*t_raw + phi);
+raw_data = exp(1i*2*pi*(3.4375)*t_raw + phi) +exp(1i*2*pi*(6.4062)*t_raw + phi) + exp(1i*2*pi*(8.4375)*t_raw + phi) + exp(1i*2*pi*(1.4062)*t_raw + phi);
 
 %% Per-pulse processing
 for i = 1 : n_ramps
@@ -35,7 +35,7 @@ for i = 1 : n_ramps
     
     correction = exp(-1i*(2*pi)*mod(i*T_ramp*(f_profile), 1)); 
     
-%     figure(1);
+%     figure(2);
 %     plot(f_profile, angle(correction)); 
 %     title('Phase vs Frequency over one PRF');
 %     xlabel('Frequency');
@@ -55,8 +55,7 @@ for i = 1 : n_ramps
     
     RTI(:, i) = chop_profile;        
         
-    figure(2);
-
+%     figure(3);
 %     subplot(1,3,1);
 %     plot(t_beat, real(beat));
 %     title('Time Domain');

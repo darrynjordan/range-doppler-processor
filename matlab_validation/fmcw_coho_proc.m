@@ -1,6 +1,6 @@
 %% Processing settings
 
-n_peek = 10;                        % number of profiles to view during processing
+n_peek = 5;                        % number of profiles to view during processing
 is_windowing = 0;                   % enable tapering
 is_sub = 0;                         % enable coherent subtraction
 n_ref = 1;                          % index of profile to use as a reference for subtraction
@@ -19,7 +19,7 @@ t_ramp = t_up + t_down;             % total modulation period per ramp [s]
 
 %% Extract raw data
 
-f_in_id = fopen('/home/darryn/Dropbox/Datasets/Loop-Back/MiloSAR/01_30_08_51_08/ch1.bin');
+f_in_id = fopen('/home/darryn/Dropbox/Datasets/Loop-Back/MiloSAR/02_07_14_27_43/ch1.bin');
 raw_data = fread(f_in_id, Inf, 'int16');
 
 % f_c = 1.00001e6;    
@@ -92,6 +92,8 @@ for i = 1 : n_ramps
     start = floor(i*f_s*t_ramp);
     stop  = start + ns_padded - 1;   
     
+    correction = exp(-1i*(2*pi)*(i*t_ramp*(getVco(671089)*10^6))); 
+    
     if(stop > ns_dataset)
         continue;
     end;
@@ -105,6 +107,7 @@ for i = 1 : n_ramps
     beat_fft = fft(beat, ns_fft); 
 
     profile = beat_fft(1 : ns_profile);
+    profile = profile.*correction';
     
     int_profile = int_profile + profile;
     
@@ -158,20 +161,20 @@ clear raw_data;
 
 figure(3);
 subplot(1, 2, 1);
-imagesc(T_raw, R_fft, 10*log(abs(RTI)));
+imagesc(T_raw, F_fft, 10*log(abs(RTI)));
 title('RTI');
 ylabel('Frequency [MHz]');
 xlabel('Slow Time [s]');  
-%ylim([1.89 1.91]);
+ylim([0.9 1.1]);
 %caxis([-50 100]);
 colorbar;
 
 subplot(1, 2, 2);
-imagesc(T_raw, R_fft, angle(RTI));
+imagesc(T_raw, F_fft, angle(RTI));
 title('Phase');
 ylabel('Frequency [MHz]');
 xlabel('Slow Time [s]');  
-%ylim([1.89 1.91]);
+ylim([0.9 1.1]);
 colorbar;
 
 fclose(f_in_id);
@@ -180,9 +183,6 @@ if (is_g2_out)
     fclose(f_out_id);
 end;
 
-pause;
-
-close all;
 
 
  
