@@ -1,5 +1,8 @@
 # Created by https://www.gitignore.io/api/cmake,opencv,linux
 
+### RDP ###
+rdp
+
 ### CMake ###
 CMakeCache.txt
 CMakeFiles
