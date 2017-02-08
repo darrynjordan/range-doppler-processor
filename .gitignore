@@ -19,6 +19,8 @@ CTestTestfile.cmake
 */cmake_install.cmake
 .DS_Store
 
+### Geany ###
+rdp.geany
 
 ### Linux ###
 *~
