@@ -13,13 +13,14 @@ dF = 32;                            % decimation factor
 F_s = 125e6/dF;                     % sampling frequency [Hz]
 B = 100e6;                          % sweep bandwidth [Hz]
 
+FN = 671089;
 T_up = 327.68e-6;                   % upramp period [s]
 T_down = 163.84e-6;                 % downramp period [s]              
 T_ramp = T_up + T_down;             % total modulation period per ramp [s]
 
 %% Extract raw data
 
-f_in_id = fopen('/home/darryn/Dropbox/Datasets/Loop-Back/MiloSAR/02_07_14_27_43/ch1.bin');
+f_in_id = fopen('/home/darryn/Dropbox/Datasets/Loop-Back/MiloSAR/02_09_22_45_36/ch1.bin');
 raw_data = fread(f_in_id, Inf, 'int16');
 
 % F_c = 1.09301e6;    
@@ -46,7 +47,7 @@ ylabel('Arbitrary Amplitude');
 
 % user identifies correct location to begin signal chopping
 pause;
-ns_chop = 2.85e4;
+ns_chop = 1.875e4;%2.85e4;
 raw_data = raw_data(ns_chop : length(raw_data)); 
 
 % remove dc offset
@@ -104,7 +105,7 @@ for i = 1 : n_ramps
     beat_fft = fft(beat, ns_fft); 
     profile = beat_fft(1 : ns_profile);
     
-    correction = exp(-1i*(2*pi)*((i)*T_ramp*(get_vco(671089)*1e6)));
+    correction = exp(-1i*(2*pi)*((i)*T_ramp*get_vco(FN)));
     profile = profile.*correction;
     
     int_profile = int_profile + profile;
@@ -139,11 +140,11 @@ for i = 1 : n_ramps
         title('Time Domain');
         xlabel('Time [s]');
         ylabel('Amplitude');
-        xlim([0 10e-6]);
+        %xlim([0 10e-6]);
 
 
         subplot(1,2,2);
-        plot(f_profile, 10*log(abs(profile)));
+        plot(f_profile, 10*log(abs(int_profile)));
         title('Freq Domain');
         xlabel('Frequency [MHz]');
         ylabel('Amplitude [dB]');
