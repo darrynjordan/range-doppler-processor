@@ -1,31 +1,31 @@
 %% Processing settings
 
-n_peek = 5;                        % number of profiles to view during processing
-is_windowing = 0;                   % enable tapering
+n_peek = 5;                         % number of profiles to view during processing
+is_windowing = 1;                   % enable tapering
 is_sub = 0;                         % enable coherent subtraction
-n_ref = 1;                          % index of profile to use as a reference for subtraction
+n_ref = 10;                          % index of profile to use as a reference for subtraction
 is_g2_out = 0;                      % enable the output of g2 compatible data
 
 %% Experiment parameters
 
 c = 299792458;                      % speed of light
-df = 32;                            % decimation factor
-f_s = 125e6/df;                     % sampling frequency [Hz]
-b = 100e6;                          % sweep bandwidth [Hz]
+dF = 32;                            % decimation factor
+F_s = 125e6/dF;                     % sampling frequency [Hz]
+B = 100e6;                          % sweep bandwidth [Hz]
 
-t_up = 327.68e-6;                   % upramp period [s]
-t_down = 163.84e-6;                 % downramp period [s]              
-t_ramp = t_up + t_down;             % total modulation period per ramp [s]
+T_up = 327.68e-6;                   % upramp period [s]
+T_down = 163.84e-6;                 % downramp period [s]              
+T_ramp = T_up + T_down;             % total modulation period per ramp [s]
 
 %% Extract raw data
 
 f_in_id = fopen('/home/darryn/Dropbox/Datasets/Loop-Back/MiloSAR/02_07_14_27_43/ch1.bin');
 raw_data = fread(f_in_id, Inf, 'int16');
 
-% f_c = 1.00001e6;    
+% F_c = 1.09301e6;    
 % ns_dataset = 1e6; 
-% T_raw = linspace(0, (ns_dataset - 1)/f_s, ns_dataset);
-% raw_data = sin(2*pi*f_c*T_raw);
+% t_raw = linspace(0, (ns_dataset - 1)/F_s, ns_dataset);
+% raw_data = sin(2*pi*F_c*t_raw);
 
 %% Setup output file
 
@@ -36,7 +36,7 @@ end;
 %% Plot Dechirped Signal
 
 ns_preview = 65536;
-t_preview = linspace(0, (ns_preview - 1)/f_s, ns_preview);   % time vector for preview [s]
+t_preview = linspace(0, (ns_preview - 1)/F_s, ns_preview);   % time vector for preview [s]
 
 figure(1); 
 plot(raw_data(1 : ns_preview));  
@@ -56,28 +56,27 @@ raw_data = raw_data - offset;
 %% Calculated parameters
 
 ns_dataset = length(raw_data);              % number of recorded samples
-ns_ramp = floor(f_s*t_ramp);
+ns_ramp = floor(F_s*T_ramp);
 n_ramps = floor(ns_dataset/ns_ramp);        % number of ramps
-ns_trim = floor(f_s*1.1*t_down);
-ns_padded = ns_ramp - ns_trim;              % number of samples each ramp will be zero padded to.
-ns_fft = 2^nextpow2(ns_padded);             % number of samples in FFT
+ns_fft = 2^nextpow2(ns_ramp);             % number of samples in FFT
 ns_profile = ns_fft/2 + 1;                  % number of samples in a range profile    
+ns_useful = ns_ramp - floor(F_s*T_up); 
 
-r_unamb = c*t_ramp/2;                       % unambiguous range [m]
-r_rec = (f_s/2)*(t_up/b)*(c/2);             % maximum recordable range [m]
-
+R_max = 1000;
+T_prop_max = (2*R_max)/c;
+ns_prop_max = floor(F_s*T_prop_max);
 
 %% Define vectors
 
 % time verctors
-T_raw = linspace(0, (ns_dataset - 1)/f_s, ns_dataset);   % time vector for entire dataset [s]
-T_padded = linspace(0, (ns_padded - 1)/f_s, ns_padded);  % time vector for single ramp [s]
+t_raw = linspace(0, (ns_dataset - 1)/F_s, ns_dataset);   % time vector for entire dataset [s]
+t_useful = linspace(0, (ns_useful - 1)/F_s, ns_useful);
 
 % frequency vectors
-F_fft = linspace(0, f_s/2, ns_profile)*(1e-6);           % frequency vector for the spectrum of one ramp [MHz]
+f_profile = linspace(0, F_s/2, ns_profile)*(1e-6);           % frequency vector for the spectrum of one ramp [MHz]
 
 % range vectors
-R_fft = linspace(0, r_rec, ns_profile);                  % range vector for single ramp [m]
+%r_fft = linspace(0, R_rec, ns_profile);                  % range vector for single ramp [m]
       
 %% Define image matrices
 
@@ -89,10 +88,8 @@ ref_profile = zeros(ns_profile, 1);
 %% Per-pulse processing
 for i = 1 : n_ramps
      
-    start = floor(i*f_s*t_ramp);
-    stop  = start + ns_padded - 1;   
-    
-    correction = exp(-1i*(2*pi)*(i*t_ramp*(getVco(671089)*10^6))); 
+    start = floor((i-1)*F_s*T_ramp) + 1 + ns_prop_max;
+    stop  = start + ns_useful - 1;       
     
     if(stop > ns_dataset)
         continue;
@@ -101,13 +98,14 @@ for i = 1 : n_ramps
     beat = raw_data(start : stop);    
     
     if(is_windowing)
-        beat = beat.*hamming(ns_padded);
+        beat = beat.*hamming(ns_useful);
     end;
     
     beat_fft = fft(beat, ns_fft); 
-
     profile = beat_fft(1 : ns_profile);
-    profile = profile.*correction';
+    
+    correction = exp(-1i*(2*pi)*((i)*T_ramp*(get_vco(671089)*1e6)));
+    profile = profile.*correction;
     
     int_profile = int_profile + profile;
     
@@ -137,7 +135,7 @@ for i = 1 : n_ramps
         figure(2);
         
         subplot(1,2,1);
-        plot(T_padded, real(beat));
+        plot(t_useful, real(beat));
         title('Time Domain');
         xlabel('Time [s]');
         ylabel('Amplitude');
@@ -145,12 +143,12 @@ for i = 1 : n_ramps
 
 
         subplot(1,2,2);
-        plot(F_fft, 10*log(abs(profile)));
+        plot(f_profile, 10*log(abs(profile)));
         title('Freq Domain');
         xlabel('Frequency [MHz]');
         ylabel('Amplitude [dB]');
         %ylim([50 180]);  
-        xlim([-0.1 (max(F_fft) + 0.1)]);
+        xlim([-0.1 (max(f_profile) + 0.1)]);
         
         pause;
     end;
@@ -161,20 +159,20 @@ clear raw_data;
 
 figure(3);
 subplot(1, 2, 1);
-imagesc(T_raw, F_fft, 10*log(abs(RTI)));
+imagesc(t_raw, f_profile, 10*log(abs(RTI)));
 title('RTI');
 ylabel('Frequency [MHz]');
 xlabel('Slow Time [s]');  
-ylim([0.9 1.1]);
+%ylim([0.9 1.1]);
 %caxis([-50 100]);
 colorbar;
 
 subplot(1, 2, 2);
-imagesc(T_raw, F_fft, angle(RTI));
+imagesc(t_raw, f_profile, angle(RTI));
 title('Phase');
 ylabel('Frequency [MHz]');
 xlabel('Slow Time [s]');  
-ylim([0.9 1.1]);
+%ylim([0.9 1.1]);
 colorbar;
 
 fclose(f_in_id);
