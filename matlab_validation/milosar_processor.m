@@ -1,6 +1,6 @@
 %% Processing settings
 
-n_peek = 5;                         % number of profiles to view during processing
+n_peek = 10;                         % number of profiles to view during processing
 is_windowing = 1;                   % enable tapering
 is_sub = 0;                         % enable coherent subtraction
 n_ref = 10;                          % index of profile to use as a reference for subtraction
@@ -13,14 +13,14 @@ dF = 32;                            % decimation factor
 F_s = 125e6/dF;                     % sampling frequency [Hz]
 B = 100e6;                          % sweep bandwidth [Hz]
 
-FN = 671089;
+FN = 1275068;
 T_up = 327.68e-6;                   % upramp period [s]
 T_down = 163.84e-6;                 % downramp period [s]              
 T_ramp = T_up + T_down;             % total modulation period per ramp [s]
 
 %% Extract raw data
 
-f_in_id = fopen('/home/darryn/Dropbox/Datasets/Loop-Back/MiloSAR/02_09_22_45_36/ch1.bin');
+f_in_id = fopen('/media/Storage/Dropbox/Datasets/Hallway Data/freq_shift/02_09_23_35_48/ch1.bin');
 raw_data = fread(f_in_id, Inf, 'int16');
 
 % F_c = 1.09301e6;    
@@ -47,7 +47,7 @@ ylabel('Arbitrary Amplitude');
 
 % user identifies correct location to begin signal chopping
 pause;
-ns_chop = 1.875e4;%2.85e4;
+ns_chop = 2.663e4;
 raw_data = raw_data(ns_chop : length(raw_data)); 
 
 % remove dc offset
@@ -164,8 +164,8 @@ imagesc(t_raw, f_profile, 10*log(abs(RTI)));
 title('RTI');
 ylabel('Frequency [MHz]');
 xlabel('Slow Time [s]');  
-%ylim([0.9 1.1]);
-%caxis([-50 100]);
+ylim([1.7 1.9]);
+caxis([80 130]);
 colorbar;
 
 subplot(1, 2, 2);
@@ -173,7 +173,7 @@ imagesc(t_raw, f_profile, angle(RTI));
 title('Phase');
 ylabel('Frequency [MHz]');
 xlabel('Slow Time [s]');  
-%ylim([0.9 1.1]);
+ylim([1.7 1.9]);
 colorbar;
 
 fclose(f_in_id);
