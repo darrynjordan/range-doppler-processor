@@ -20,7 +20,7 @@ T_ramp = T_up + T_down;             % total modulation period per ramp [s]
 
 %% Extract raw data
 
-f_in_id = fopen('/media/Storage/Dropbox/Datasets/Hallway Data/freq_shift/02_09_23_35_48/ch1.bin');
+f_in_id = fopen('/home/darryn/Dropbox/Datasets/Hallway Data/freq_shift/02_09_23_35_48/ch1.bin');
 raw_data = fread(f_in_id, Inf, 'int16');
 
 % F_c = 1.09301e6;    

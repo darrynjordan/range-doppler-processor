@@ -97,7 +97,7 @@ class Processor
 		void extractParameters(void);
 		void visualize(void);
 		void initPlots(void);
-		 
+		
         void setIsDebug(bool IsDebug){isDebug = IsDebug;}
         bool getIsDebug(void){return isDebug;}	
         

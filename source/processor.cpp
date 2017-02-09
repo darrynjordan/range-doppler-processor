@@ -249,8 +249,10 @@ void Processor::fftDoppler(void)
 void Processor::loadDopplerData(int index)	
 {
 	if (index%updateRate == 0)
+	{
 		dopplerIndex = index;
-
+	}
+	
 	if ((index - dopplerIndex) <= ns_doppler)
 	{
 		for (int j = 0; j < ns_padded; j++)
@@ -289,7 +291,7 @@ void Processor::loadDopplerBuffer(int index)
 }
 
 
-void Processor::processPixels(OpenCVPlot &outPlot, fftw_complex* inData, double* outData, int n_samples, bool isShift)
+void Processor::processPixels(OpenCVPlot &outPlot, fftw_complex* inData, double* outData, int n_samples, bool isShift) //%TODO get opencv to perform these operations
 {
 	double magnitude = 0.0f;
 	

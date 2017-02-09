@@ -3,7 +3,7 @@
 #include "timer.h"
 #include <unistd.h>
 
-#define VERSION "0.1.6"
+#define VERSION "0.2.0"
 
 void splash(void);
 
