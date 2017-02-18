@@ -1,26 +1,32 @@
+clc;
+clear;
 %% Processing settings
 
-n_peek = 10;                         % number of profiles to view during processing
+n_peek = 0;                        % number of profiles to view during processing
 is_windowing = 1;                   % enable tapering
 is_sub = 0;                         % enable coherent subtraction
-n_ref = 10;                          % index of profile to use as a reference for subtraction
+n_ref = 10;                         % index of profile to use as a reference for subtraction
+n_int = 1;                          % number of profiles to integrate
 is_g2_out = 0;                      % enable the output of g2 compatible data
 
 %% Experiment parameters
 
 c = 299792458;                      % speed of light
-dF = 32;                            % decimation factor
+dF = 64;                            % decimation factor
 F_s = 125e6/dF;                     % sampling frequency [Hz]
 B = 100e6;                          % sweep bandwidth [Hz]
 
-FN = 1275068;
+FN = 5890187;
 T_up = 327.68e-6;                   % upramp period [s]
 T_down = 163.84e-6;                 % downramp period [s]              
 T_ramp = T_up + T_down;             % total modulation period per ramp [s]
 
+r_f_scaling = (B/T_up)*(2/c);
+nyquist_zone = (9*F_s/2);
+
 %% Extract raw data
 
-f_in_id = fopen('/home/darryn/Dropbox/Datasets/Hallway Data/freq_shift/02_09_23_35_48/ch1.bin');
+f_in_id = fopen('/home/darryn/Dropbox/Datasets/Band-Pass Filtering Scheme/02_17_15_58_15/ch1.bin');
 raw_data = fread(f_in_id, Inf, 'int16');
 
 % F_c = 1.09301e6;    
@@ -47,7 +53,7 @@ ylabel('Arbitrary Amplitude');
 
 % user identifies correct location to begin signal chopping
 pause;
-ns_chop = 2.663e4;
+ns_chop = 2.94e4;
 raw_data = raw_data(ns_chop : length(raw_data)); 
 
 % remove dc offset
@@ -58,10 +64,10 @@ raw_data = raw_data - offset;
 
 ns_dataset = length(raw_data);              % number of recorded samples
 ns_ramp = floor(F_s*T_ramp);
-n_ramps = floor(ns_dataset/ns_ramp);        % number of ramps
+ns_useful = ns_ramp - floor(F_s*T_down); 
+n_ramps = floor(ns_dataset/(ns_ramp));        % number of ramps
 ns_fft = 2^nextpow2(ns_ramp);             % number of samples in FFT
 ns_profile = ns_fft/2 + 1;                  % number of samples in a range profile    
-ns_useful = ns_ramp - floor(F_s*T_up); 
 
 R_max = 1000;
 T_prop_max = (2*R_max)/c;
@@ -70,18 +76,20 @@ ns_prop_max = floor(F_s*T_prop_max);
 %% Define vectors
 
 % time verctors
-t_raw = linspace(0, (ns_dataset - 1)/F_s, ns_dataset);   % time vector for entire dataset [s]
+t_raw = linspace(0, (ns_dataset - 1)/F_s, ns_dataset/n_int);   % time vector for entire dataset [s]
 t_useful = linspace(0, (ns_useful - 1)/F_s, ns_useful);
 
 % frequency vectors
-f_profile = linspace(0, F_s/2, ns_profile)*(1e-6);           % frequency vector for the spectrum of one ramp [MHz]
+start_freq = nyquist_zone;
+end_freq = start_freq + F_s/2;
+f_profile = linspace(end_freq, start_freq, ns_profile)*(1e-6);           % frequency vector for the spectrum of one ramp [MHz]
 
 % range vectors
-%r_fft = linspace(0, R_rec, ns_profile);                  % range vector for single ramp [m]
+r_fft = linspace(F_s/(2*r_f_scaling), 0, ns_profile);        % range vector for single ramp [m]
       
 %% Define image matrices
 
-RTI = zeros(ns_profile, n_ramps);
+RTI = zeros(ns_profile, round(n_ramps/n_int));
 profile = zeros(ns_profile, 1);
 int_profile = zeros(ns_profile, 1);
 ref_profile = zeros(ns_profile, 1);
@@ -105,7 +113,7 @@ for i = 1 : n_ramps
     beat_fft = fft(beat, ns_fft); 
     profile = beat_fft(1 : ns_profile);
     
-    correction = exp(-1i*(2*pi)*((i)*T_ramp*get_vco(FN)));
+    correction = exp(1i*(2*pi)*((i)*T_ramp*get_vco(FN)));
     profile = profile.*correction;
     
     int_profile = int_profile + profile;
@@ -129,7 +137,11 @@ for i = 1 : n_ramps
         end;        
     end;
     
-    RTI(:, i) = profile;
+    if (mod(i, n_int) == 0)
+        RTI(:, round(i/n_int)) = int_profile;
+        int_profile = zeros(ns_profile, 1);
+    end;
+    
     
     if (i <= n_peek)          
         
@@ -147,9 +159,9 @@ for i = 1 : n_ramps
         plot(f_profile, 10*log(abs(int_profile)));
         title('Freq Domain');
         xlabel('Frequency [MHz]');
-        ylabel('Amplitude [dB]');
-        %ylim([50 180]);  
-        xlim([-0.1 (max(f_profile) + 0.1)]);
+        ylabel('Magnitude');
+        %ylim([100 200]);  
+        %xlim([-0.1 (max(f_profile) + 0.1)]);
         
         pause;
     end;
@@ -164,8 +176,8 @@ imagesc(t_raw, f_profile, 10*log(abs(RTI)));
 title('RTI');
 ylabel('Frequency [MHz]');
 xlabel('Slow Time [s]');  
-ylim([1.7 1.9]);
-caxis([80 130]);
+ylim([8.789 8.85]);
+%caxis([80 130]);
 colorbar;
 
 subplot(1, 2, 2);
@@ -173,7 +185,7 @@ imagesc(t_raw, f_profile, angle(RTI));
 title('Phase');
 ylabel('Frequency [MHz]');
 xlabel('Slow Time [s]');  
-ylim([1.7 1.9]);
+ylim([8.789 8.85]);
 colorbar;
 
 fclose(f_in_id);
