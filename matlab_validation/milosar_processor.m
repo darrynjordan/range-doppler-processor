@@ -2,11 +2,11 @@ clc;
 clear;
 %% Processing settings
 
-n_peek = 0;                        % number of profiles to view during processing
-is_windowing = 1;                   % enable tapering
+n_peek = 10;                        % number of profiles to view during processing
+is_windowing = 0;                   % enable tapering
 is_sub = 0;                         % enable coherent subtraction
-n_ref = 10;                         % index of profile to use as a reference for subtraction
-n_int = 2;                          % number of profiles to integrate
+n_ref = 1;                          % index of profile to use as a reference for subtraction
+n_int = 10;                         % number of profiles to integrate
 is_g2_out = 0;                      % enable the output of g2 compatible data
 
 %% Experiment parameters
@@ -16,17 +16,17 @@ dF = 16;                            % decimation factor
 F_s = 125e6/dF;                     % sampling frequency [Hz]
 B = 100e6;                          % sweep bandwidth [Hz]
 
-FN = 7180648;
+FN = 2020514;
 T_up = 327.68e-6;                   % upramp period [s]
 T_down = 163.84e-6;                 % downramp period [s]              
 T_ramp = T_up + T_down;             % total modulation period per ramp [s]
 
 r_f_scaling = (B/T_up)*(2/c);
-nyquist_zone = (2*F_s/2);
+nyquist_zone = 0*(F_s/2);
 
 %% Extract raw data
 
-f_in_id = fopen('/home/darryn/Dropbox/Datasets/Loop-Back/MiloSAR/02_21_09_43_07/ch1.bin');
+f_in_id = fopen('/home/darryn/Dropbox/Datasets/Loop-Back/MiloSAR/02_28_15_04_32/ch1.bin');
 raw_data = fread(f_in_id, Inf, 'int16');
 
 % F_c = 1.09301e6;    
@@ -54,7 +54,7 @@ ylabel('Arbitrary Amplitude');
 
 % user identifies correct location to begin signal chopping
 pause;
-ns_chop = 2.203e4;
+ns_chop = 2.95e4;
 raw_data = raw_data(ns_chop : length(raw_data)); 
 
 % remove dc offset
@@ -136,13 +136,7 @@ for i = 1 : n_ramps
             fwrite(f_out_id, real(profile(k)), 'float', 'ieee-le');
             fwrite(f_out_id, imag(profile(k)), 'float', 'ieee-le');
         end;        
-    end;
-    
-    if (mod(i, n_int) == 0)
-        RTI(:, round(i/n_int)) = int_profile;
-        int_profile = zeros(ns_profile, 1);
-    end;
-    
+    end;   
     
     if (i <= n_peek)          
         
@@ -166,6 +160,11 @@ for i = 1 : n_ramps
         
         pause;
     end;
+    
+    if (mod(i, n_int) == 0)
+        RTI(:, round(i/n_int)) = int_profile;
+        int_profile = zeros(ns_profile, 1);
+    end;
 
 end;
 
@@ -178,7 +177,7 @@ title('RTI');
 ylabel('Frequency [MHz]');
 xlabel('Slow Time [s]');  
 %ylim([8.789 8.85]);
-%caxis([80 130]);
+%caxis([60 110]);
 colorbar;
 
 subplot(1, 2, 2);
@@ -194,6 +193,8 @@ fclose(f_in_id);
 if (is_g2_out)
     fclose(f_out_id);
 end;
+
+fprintf('');
 
 
 
