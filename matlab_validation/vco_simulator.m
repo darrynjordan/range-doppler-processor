@@ -4,7 +4,7 @@ B = 300;
 
 F_s = 5*(F_c);
 
-n_ramps = 10;
+n_ramps = 5;
 SKEW = 0.8;
 T_up = SKEW;
 T_down = 1 - T_up;
@@ -62,14 +62,14 @@ for i = 2 : n_ramps - 1
         continue;
     end;
     
-    beat = raw_beat(start : stop); 
-  
+    beat = raw_beat(start : stop);     
+ 
     chop_fft = fft(beat, ns_fft); 
-    chop_profile = chop_fft(1 : ns_profile);
-    
+    chop_profile = chop_fft(1 : ns_profile);   
+  
     correction = exp(-1i*(2*pi)*((i)*T_ramp*(F_o))); 
     chop_profile = chop_profile.*correction;
-    
+  
     RTI(:, i) = chop_profile;        
         
 %     figure(2); 
@@ -85,7 +85,7 @@ for i = 2 : n_ramps - 1
 %     xlabel('Frequency [MHz]');
 %     ylabel('Amplitude [dB]');
 %     %ylim([80 160]);  
-%     xlim([-0.1 (max(f_fft) + 0.1)]); 
+%     xlim([-0.1 (max(f_fft) + 0.1)]);     
 %     pause;
 end;
 
