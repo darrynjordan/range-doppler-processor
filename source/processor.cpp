@@ -19,41 +19,22 @@ Processor::Processor(const char *filePath, Timer &timer, bool debug_flag)
 	parameterFilePath = filePath;	
 	ini.LoadFile(parameterFilePath);	
 	
-	binaryFilePath 		= ini.GetValue("dataset", "filepath");
-	bandwidth 			= atof(ini.GetValue("dataset", "bandwidth"));
-	decimationFactor 	= atoi(ini.GetValue("dataset", "decimation_factor"));
-	offset 				= atof(ini.GetValue("dataset", "adc_offset"));
-	upPeriod 			= atof(ini.GetValue("dataset", "up_period"));
-	downPeriod 			= atof(ini.GetValue("dataset", "down_period"));		
-	ns_trim 			= atoi(ini.GetValue("dataset", "trim"));	
-	ns_doppler			= atoi(ini.GetValue("processing", "doppler_points"));			
-	updateRate			= atoi(ini.GetValue("processing", "update_rate"));	
+	binaryFilePath = ini.GetValue("dataset", "filepath");
+	bandwidth = atof(ini.GetValue("dataset", "bandwidth"));
+	decimationFactor = atoi(ini.GetValue("dataset", "decimation_factor"));
+	offset = atof(ini.GetValue("dataset", "adc_offset"));
+	upPeriod = atof(ini.GetValue("dataset", "up_period"));
+	downPeriod = atof(ini.GetValue("dataset", "down_period"));		
+	ns_trim = atoi(ini.GetValue("dataset", "trim"));	
+	ns_doppler = atoi(ini.GetValue("processing", "doppler_points"));			
+	updateRate = atoi(ini.GetValue("processing", "update_rate"));	
 	
-	std::string keyValue = ini.GetValue("processing", "range_window");
+	rangeTaper.setFunction(ini.GetValue("processing", "range_window"));
+	dopplerTaper.setFunction(ini.GetValue("processing", "doppler_window"));
 	
-	if (keyValue == "HAMMING")
-		rangeTaper.setFunction(HAMMING);
-	else if (keyValue == "HANNING")
-		rangeTaper.setFunction(HANNING);
-	else if (keyValue == "BLACKMAN")
-		rangeTaper.setFunction(BLACKMAN);
-	else 	
-		rangeTaper.setFunction(UNIFORM);
-		
-	keyValue = ini.GetValue("processing", "doppler_window");
+	std::string dopplerFlag = ini.GetValue("processing", "doppler");	
 	
-	if (keyValue == "HAMMING")
-		dopplerTaper.setFunction(HAMMING);
-	else if (keyValue == "HANNING")
-		dopplerTaper.setFunction(HANNING);
-	else if (keyValue == "BLACKMAN")
-		dopplerTaper.setFunction(BLACKMAN);
-	else 	
-		dopplerTaper.setFunction(UNIFORM);
-		
-	keyValue = ini.GetValue("processing", "doppler");	
-	
-	if ((keyValue == "1") || (keyValue == "true") || (keyValue == "TRUE"))
+	if ((dopplerFlag == "1") || (dopplerFlag == "true") || (dopplerFlag == "TRUE"))
 		isDoppler = true;
 	else
 		isDoppler = false;
@@ -155,6 +136,8 @@ void Processor::sniffDataset(void)
 			std::cout << "ns_doppler: \t" << ns_doppler << std::endl;	
 			std::cout << "update_rate: \t" << updateRate << std::endl;	
 			std::cout << "doppler: \t" << isDoppler << std::endl;
+			std::cout << "range_taper: \t" << rangeTaper.getFunction() << std::endl;
+			std::cout << "doppler_taper: \t" << dopplerTaper.getFunction() << std::endl;
 			std::cout << std::endl;
 		}
 		

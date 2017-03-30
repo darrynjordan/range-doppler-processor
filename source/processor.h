@@ -56,10 +56,13 @@ class Processor
 		fftw_plan dopplerPlan;				
 
 		GNUPlot gnuPlot;
+		
 		OpenCVPlot rangePlot;
 		OpenCVPlot dopplerPlot;		
+		
         Taper rangeTaper;
         Taper dopplerTaper;
+        
 		Logger logger;
 		Timer stopwatch;
 	

@@ -6,6 +6,25 @@ Taper::Taper(void)
 	
 }
 
+
+void Taper::setFunction(std::string Function)
+{
+	if (Function == "HAMMING")
+		function = HAMMING;
+	else if (Function == "HANNING")
+		function = HANNING;
+	else if (Function == "BLACKMAN")
+		function = BLACKMAN;
+	else if (Function == "UNIFORM")	
+		function = UNIFORM;
+	else
+	{
+		printf("Unknown window function - defaulting to UNIFORM.");
+		function = UNIFORM;
+	}
+}
+
+
 float Taper::getCoefficient(int sampleNumber)
 {
 	return taper[sampleNumber];

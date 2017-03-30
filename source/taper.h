@@ -3,7 +3,7 @@
 
 #include "includes.h"
 
-enum TaperFunction{HANNING, HAMMING, UNIFORM, BLACKMAN};
+enum TaperFunction {HANNING, HAMMING, UNIFORM, BLACKMAN};
 
 class Taper
 {
@@ -15,6 +15,8 @@ class Taper
 	public:		
 		Taper(void);
 		void setFunction(TaperFunction Function){function = Function;};
+		void setFunction(std::string Function);
+		int getFunction(void){return function;};
 		int getNumSamples(void){return n_samples;};		
 		void generate(int Samples);
 		float getCoefficient(int sampleNumber);
