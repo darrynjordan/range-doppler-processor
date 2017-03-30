@@ -7,10 +7,12 @@
 #define COLOUR_MAP_WIDTH 30
 #define COLOUR_MAP_PATH "../media/colour_maps/"
 #define SCREENSHOT_PATH "../media/screenshots/"
-#define DEFAULT_PLOT_DIM 300
-#define DEFAULT_PLOT_OFFSET 5
+#define PLOT_DIM 300
+#define PLOT_PADDING 5
+#define PLOT_INIT_X 50
+#define PLOT_INIT_Y 50
 
-enum PlotStyle {MAGNITUDE, IQ};
+enum PlotStyle {MAGNITUDE, PHASE};
 
 class OpenCVPlot
 {
@@ -45,7 +47,8 @@ class OpenCVPlot
         bool isTranspose;
         bool isToFile; 
         bool isSubtract;  
-        bool isRelease;        
+        bool isRelease;       
+        
     public:
         OpenCVPlot(void);
         void createWindow(std::string title, int ns_row);

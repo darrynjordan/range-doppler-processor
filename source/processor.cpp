@@ -301,22 +301,17 @@ void Processor::processPixels(OpenCVPlot &outPlot, fftw_complex* inData, double*
 
 
 void Processor::initPlots(void)
-{
-	int rangePlot_x = 50;
-	int rangePlot_y = 10;
-	int dopplerPlot_x = rangePlot_x + DEFAULT_PLOT_DIM + DEFAULT_PLOT_OFFSET;
-	int dopplerPlot_y = rangePlot_y;
-	
-	rangePlot.setSize(DEFAULT_PLOT_DIM, DEFAULT_PLOT_DIM);
-    rangePlot.setPos(rangePlot_x, rangePlot_y);
+{	
+	rangePlot.setSize(PLOT_DIM, PLOT_DIM);
+    rangePlot.setPos(PLOT_INIT_X, PLOT_INIT_Y);
     rangePlot.createWindow("RTI Plot", ns_spectrum); 
     rangePlot.setTranspose(true); 
     rangePlot.setToFile(false);
     rangePlot.setSubtract(false);
     rangePlot.setRelease(false);
     
-    dopplerPlot.setSize(DEFAULT_PLOT_DIM, DEFAULT_PLOT_DIM);
-    dopplerPlot.setPos(dopplerPlot_x, dopplerPlot_y);
+    dopplerPlot.setSize(PLOT_DIM, PLOT_DIM);
+    dopplerPlot.setPos(PLOT_INIT_X + PLOT_DIM + PLOT_PADDING, PLOT_INIT_Y);
     dopplerPlot.createWindow("Doppler Plot", ns_doppler);   
     dopplerPlot.setTranspose(false);
     dopplerPlot.setToFile(false); 
