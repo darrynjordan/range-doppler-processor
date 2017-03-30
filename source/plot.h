@@ -7,7 +7,7 @@
 #define COLOUR_MAP_WIDTH 30
 #define COLOUR_MAP_PATH "../media/colour_maps/"
 #define SCREENSHOT_PATH "../media/screenshots/"
-#define PLOT_DIM 300
+#define PLOT_DIM 400
 #define PLOT_PADDING 5
 #define PLOT_INIT_X 50
 #define PLOT_INIT_Y 50

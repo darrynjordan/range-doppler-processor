@@ -304,7 +304,7 @@ void Processor::initPlots(void)
 {	
 	rangePlot.setSize(PLOT_DIM, PLOT_DIM);
     rangePlot.setPos(PLOT_INIT_X, PLOT_INIT_Y);
-    rangePlot.createWindow("RTI Plot", ns_spectrum); 
+    rangePlot.createWindow("RTI", ns_spectrum); 
     rangePlot.setTranspose(true); 
     rangePlot.setToFile(false);
     rangePlot.setSubtract(false);
@@ -312,7 +312,7 @@ void Processor::initPlots(void)
     
     dopplerPlot.setSize(PLOT_DIM, PLOT_DIM);
     dopplerPlot.setPos(PLOT_INIT_X + PLOT_DIM + PLOT_PADDING, PLOT_INIT_Y);
-    dopplerPlot.createWindow("Doppler Plot", ns_doppler);   
+    dopplerPlot.createWindow("Doppler", ns_doppler);   
     dopplerPlot.setTranspose(false);
     dopplerPlot.setToFile(false); 
     dopplerPlot.setSubtract(false);
@@ -320,7 +320,7 @@ void Processor::initPlots(void)
     
     gnuPlot.setTitle("Range Profile");
 	gnuPlot.setXLabel("Sample Number");
-	gnuPlot.setYLabel("Amplitude");	
+	gnuPlot.setYLabel("ADC Count");	
 }
 
 

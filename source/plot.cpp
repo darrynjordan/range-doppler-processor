@@ -205,7 +205,7 @@ void OpenCVPlot::createWindow(std::string title, int ns_row)
     controlWindowName = stringStream.str();
     
     cv::namedWindow(controlWindowName);      
-    cv::moveWindow(controlWindowName, xPos, yPos + height + 45);
+    cv::moveWindow(controlWindowName, xPos, yPos + height + 35);
     cv::resizeWindow(controlWindowName, width, 100);
     
     cv::createTrackbar("Zoom", controlWindowName, &zoomSlider, zoomMax, onChange, this);
